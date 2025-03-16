@@ -10,7 +10,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ReservedSeatRepository {
+public class ReservedSeatRepository implements Repository<Integer, ReservedSeat> {
 
     private final Logger logger = LoggerFactory.getLogger(ReservedSeatRepository.class);
 
@@ -33,6 +33,7 @@ public class ReservedSeatRepository {
         this.clientRepository = clientRepository;
     }
 
+    @Override
     public Optional<ReservedSeat> findById(Integer id) {
         String query = "SELECT * FROM ReservedSeats WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -50,6 +51,7 @@ public class ReservedSeatRepository {
         return Optional.empty();
     }
 
+    @Override
     public List<ReservedSeat> findAll() {
         List<ReservedSeat> reservedSeats = new ArrayList<>();
         String query = "SELECT * FROM ReservedSeats";
@@ -84,68 +86,84 @@ public class ReservedSeatRepository {
         return reservedSeats;
     }
 
-    public boolean save(ReservedSeat reservedSeat) {
+    @Override
+    public Optional<ReservedSeat> save(ReservedSeat reservedSeat) {
         String query = "INSERT INTO ReservedSeats(trip_id, employee_id, seat_number, client_id) VALUES(?, ?, ?, ?)";
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setInt(1, reservedSeat.getTrip().getId());
-
-            if (reservedSeat.getEmployee() != null) {
-                statement.setInt(2, reservedSeat.getEmployee().getId());
-            } else {
-                statement.setNull(2, Types.INTEGER);
-            }
-
+            statement.setInt(2, reservedSeat.getEmployee().getId());
             statement.setInt(3, reservedSeat.getSeatNumber());
+            statement.setInt(4, reservedSeat.getClient().getId());
+            statement.setTimestamp(5, Timestamp.valueOf(reservedSeat.getReservationDate()));
+            statement.executeUpdate();
 
-            if (reservedSeat.getClient() != null) {
-                statement.setInt(4, reservedSeat.getClient().getId());
-            } else {
-                statement.setNull(4, Types.INTEGER);
-            }
-
-            int affectedRows = statement.executeUpdate();
-
-            if (affectedRows == 0) {
-                return false;
-            }
-
-            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    reservedSeat.setId(generatedKeys.getInt(1));
-                    return true;
-                }
+            ResultSet resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                reservedSeat.setId(resultSet.getInt(1));
+                return Optional.of(reservedSeat);
             }
         } catch (SQLException e) {
             logger.error("Database error while saving ReservedSeat", e);
         }
-        return false;
+        return Optional.empty();
     }
 
-    public boolean delete(Integer id) {
+    @Override
+    public Optional<ReservedSeat> delete(Integer id) {
+        Optional<ReservedSeat> reservedSeatToDelete = findById(id);
+        if (reservedSeatToDelete.isEmpty()) {
+            return Optional.empty();
+        }
+
         String query = "DELETE FROM ReservedSeats WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
             int affectedRows = statement.executeUpdate();
-            return affectedRows > 0;
+            if (affectedRows > 0) {
+                return reservedSeatToDelete;
+            }
         } catch (SQLException e) {
             logger.error("Database error while deleting ReservedSeat with id {}", id, e);
-            return false;
         }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<ReservedSeat> update(ReservedSeat reservedSeat) {
+        String query = "UPDATE ReservedSeats SET trip_id=?, employee_id=?, seat_number=?, client_id=?, reservation_date=? WHERE id=?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, reservedSeat.getTrip().getId());
+            statement.setInt(2, reservedSeat.getEmployee().getId());
+            statement.setInt(3, reservedSeat.getSeatNumber());
+            statement.setInt(4, reservedSeat.getClient().getId());
+            statement.setTimestamp(5, Timestamp.valueOf(reservedSeat.getReservationDate()));
+            statement.setInt(6, reservedSeat.getId());
+
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows > 0) {
+                return Optional.of(reservedSeat);
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while updating ReservedSeat with id {}", reservedSeat.getId(), e);
+        }
+        return Optional.empty();
     }
 
     private Optional<ReservedSeat> extractReservedSeatFromResultSet(ResultSet resultSet) throws SQLException {
         Integer id = resultSet.getInt("id");
         Integer tripId = resultSet.getInt("trip_id");
-        Integer employeeId = resultSet.getInt("employee_id");
+        int employeeId = resultSet.getInt("employee_id");
         Integer seatNumber = resultSet.getInt("seat_number");
-        Integer clientId = resultSet.getInt("client_id");
+        int clientId = resultSet.getInt("client_id");
         Timestamp reservationTimestamp = resultSet.getTimestamp("reservation_date");
         LocalDateTime reservationDate = reservationTimestamp != null ?
-                                       reservationTimestamp.toLocalDateTime() : null;
+                reservationTimestamp.toLocalDateTime() : null;
 
         Optional<Trip> tripOpt = tripRepository.findById(tripId);
 

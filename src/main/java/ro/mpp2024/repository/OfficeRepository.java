@@ -8,9 +8,9 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OfficeRepository {
+public class OfficeRepository implements Repository<Integer, Office> {
 
-    private static final Logger logger = LoggerFactory.getLogger(OfficeRepository.class);
+    private final Logger logger = LoggerFactory.getLogger(OfficeRepository.class);
 
     private final String url;
     private final String user;
@@ -22,7 +22,12 @@ public class OfficeRepository {
         this.password = password;
     }
 
+    @Override
     public Optional<Office> findById(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID must not be null");
+        }
+
         String query = "SELECT * FROM Office WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(query)) {
@@ -40,23 +45,7 @@ public class OfficeRepository {
         return Optional.empty();
     }
 
-    public Optional<Office> findByName(String name) {
-        String query = "SELECT * FROM Office WHERE name = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
-             PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setString(1, name);
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                return Optional.of(new Office(resultSet.getInt("id"), resultSet.getString("name")));
-            }
-        } catch (SQLException e) {
-            logger.error("Database error while finding Office with name {}", name, e);
-        }
-        return Optional.empty();
-    }
-
+    @Override
     public List<Office> findAll() {
         List<Office> offices = new ArrayList<>();
         String query = "SELECT * FROM Office";
@@ -73,5 +62,78 @@ public class OfficeRepository {
             logger.error("Database error while finding all Offices", e);
         }
         return offices;
+    }
+
+    @Override
+    public Optional<Office> save(Office office) {
+        if (office == null) {
+            throw new IllegalArgumentException("Office must not be null");
+        }
+
+        String query = "INSERT INTO Office (id, name) VALUES (?, ?)";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, office.getId());
+            statement.setString(2, office.getName());
+
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows > 0) {
+                return Optional.of(office);
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while saving Office: {}", office, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Office> delete(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID must not be null");
+        }
+
+        Optional<Office> officeToDelete = findById(id);
+        if (officeToDelete.isEmpty()) {
+            return Optional.empty();
+        }
+
+        String query = "DELETE FROM Office WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return officeToDelete;
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while deleting Office with id {}", id, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Office> update(Office office) {
+        if (office == null) {
+            throw new IllegalArgumentException("Office must not be null");
+        }
+
+        String query = "UPDATE Office SET name = ? WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, office.getName());
+            statement.setInt(3, office.getId());
+
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows > 0) {
+                return Optional.of(office);
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while updating Office: {}", office, e);
+        }
+        return Optional.empty();
     }
 }

@@ -12,7 +12,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TripRepository {
+public class TripRepository implements Repository <Integer, Trip> {
 
     private final Logger logger = LoggerFactory.getLogger(TripRepository.class);
 
@@ -53,6 +53,7 @@ public class TripRepository {
         }
     }
 
+    @Override
     public Optional<Trip> findById(Integer id) {
         String query = "SELECT * FROM Trip WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -70,6 +71,7 @@ public class TripRepository {
         return Optional.empty();
     }
 
+    @Override
     public List<Trip> findAll() {
         List<Trip> trips = new ArrayList<>();
         String query = "SELECT * FROM Trip";
@@ -122,7 +124,8 @@ public class TripRepository {
         return trips;
     }
 
-    public boolean save(Trip trip) {
+    @Override
+    public Optional<Trip> save(Trip trip) {
         String query = "INSERT INTO Trip(destination_id, departure_date, departure_time, available_seats) VALUES(?, ?, ?, ?)";
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -132,21 +135,52 @@ public class TripRepository {
             statement.setTime(3, Time.valueOf(trip.getDepartureTime()));
             statement.setInt(4, trip.getAvailableSeats());
 
-            int affectedRows = statement.executeUpdate();
-
-            if (affectedRows == 0) {
-                return false;
-            }
+            statement.executeUpdate();
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     trip.setId(generatedKeys.getInt(1));
-                    return true;
+                    return Optional.of(trip);
                 }
             }
         } catch (SQLException e) {
             logger.error("Database error while saving Trip", e);
         }
-        return false;
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Trip> delete(Integer Id) {
+        String query = "DELETE FROM Trip WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, Id);
+            statement.executeUpdate();
+            return Optional.of(new Trip(Id, null, null, null, 0));
+        } catch (SQLException e) {
+            logger.error("Database error while deleting Trip with id {}", Id, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Trip> update(Trip trip) {
+        String query = "UPDATE Trip SET destination_id = ?, departure_date = ?, departure_time = ?, available_seats = ? WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, trip.getDestination().getId());
+            statement.setDate(2, Date.valueOf(trip.getDepartureDate()));
+            statement.setTime(3, Time.valueOf(trip.getDepartureTime()));
+            statement.setInt(4, trip.getAvailableSeats());
+            statement.setInt(5, trip.getId());
+
+            statement.executeUpdate();
+            return Optional.of(trip);
+        } catch (SQLException e) {
+            logger.error("Database error while updating Trip", e);
+        }
+        return Optional.empty();
     }
 }

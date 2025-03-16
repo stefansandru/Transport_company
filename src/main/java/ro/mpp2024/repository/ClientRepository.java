@@ -8,7 +8,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ClientRepository {
+public class ClientRepository implements Repository<Integer, Client> {
 
     Logger logger = LoggerFactory.getLogger(ClientRepository.class);
 
@@ -22,6 +22,7 @@ public class ClientRepository {
         this.password = password;
     }
 
+    @Override
     public Optional<Client> findById(Integer id) {
         String query = "SELECT * FROM Client WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -57,6 +58,7 @@ public class ClientRepository {
         return Optional.empty();
     }
 
+    @Override
     public Iterable<Client> findAll() {
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Client";
@@ -75,6 +77,7 @@ public class ClientRepository {
         return clients;
     }
 
+    @Override
     public Optional<Client> save(Client client) {
         String query = "INSERT INTO Client (name) VALUES (?)";
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -94,4 +97,34 @@ public class ClientRepository {
         return Optional.empty();
     }
 
+    @Override
+    public Optional<Client> delete(Integer id) {
+        String query = "DELETE FROM Client WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            return Optional.of(new Client(id, null));
+        } catch (SQLException e) {
+            logger.error("Database error while deleting Client with id {}", id, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Client> update(Client client) {
+        String query = "UPDATE Client SET name = ? WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, client.getName());
+            statement.setInt(2, client.getId());
+            statement.executeUpdate();
+            return Optional.of(client);
+        } catch (SQLException e) {
+            logger.error("Database error while updating Client {}", client, e);
+        }
+        return Optional.empty();
+    }
 }

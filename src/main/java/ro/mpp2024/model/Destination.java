@@ -8,6 +8,7 @@ public class Destination {
     public Destination() {}
 
     public Destination(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 

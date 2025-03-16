@@ -8,7 +8,7 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DestinationRepository {
+public class DestinationRepository implements Repository<Integer, Destination> {
 
     Logger logger = LoggerFactory.getLogger(DestinationRepository.class);
 
@@ -22,6 +22,7 @@ public class DestinationRepository {
         this.password = password;
     }
 
+    @Override
     public Optional<Destination> findById(Integer id) {
         String query = "SELECT * FROM Destination WHERE id = ?";
         try (Connection connection = DriverManager.getConnection(url, user, password);
@@ -57,6 +58,7 @@ public class DestinationRepository {
         return Optional.empty();
     }
 
+    @Override
     public List<Destination> findAll() {
         List<Destination> destinations = new ArrayList<>();
         String query = "SELECT * FROM Destination";
@@ -73,6 +75,50 @@ public class DestinationRepository {
             logger.error("Database error while finding all Destinations", e);
         }
         return destinations;
+    }
+
+    @Override
+    public Optional<Destination> save(Destination destination) {
+        String query = "INSERT INTO Destination (name) VALUES (?)";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, destination.getName());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Database error while saving Destination {}", destination, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Destination> delete(Integer id) {
+        String query = "DELETE FROM Destination WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            return Optional.of(new Destination(id, null));
+        } catch (SQLException e) {
+            logger.error("Database error while deleting Destination with id {}", id, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Destination> update(Destination destination) {
+        String query = "UPDATE Destination SET name = ? WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(url, user, password);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, destination.getName());
+            statement.setInt(2, destination.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            logger.error("Database error while updating Destination {}", destination, e);
+        }
+        return Optional.empty();
     }
 
 }
