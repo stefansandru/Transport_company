@@ -6,33 +6,24 @@ import ro.mpp2024.model.Office;
 import java.sql.*;
 import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+public class EmployeeRepository extends AbstractRepository<Integer, Employee> implements IRepository<Integer, Employee> {
 
-public class EmployeeRepository implements Repository<Integer, Employee> {
-
-    private final Logger logger = LoggerFactory.getLogger(EmployeeRepository.class);
-
-    private final String url;
-    private final String user;
-    private final String password;
     private final OfficeRepository officeRepository;
 
-    public EmployeeRepository(String url, String user, String password, OfficeRepository officeRepository) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
+    public EmployeeRepository(Properties props, OfficeRepository officeRepository) {
+        super(props);
         this.officeRepository = officeRepository;
     }
 
     @Override
     public Optional<Employee> findById(Integer id) {
+        logger.info("Find Employee by ID: {}", id);
         if (id == null) {
             throw new IllegalArgumentException("ID must not be null");
         }
 
         String query = "SELECT * FROM Employee WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -53,9 +44,10 @@ public class EmployeeRepository implements Repository<Integer, Employee> {
 
     @Override
     public List<Employee> findAll() {
+        logger.info("Find all Employees");
         List<Employee> employees = new ArrayList<>();
         String query = "SELECT * FROM Employee";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
@@ -75,8 +67,9 @@ public class EmployeeRepository implements Repository<Integer, Employee> {
 
     @Override
     public Optional<Employee> save(Employee employee) {
+        logger.info("Save Employee: {}", employee);
         String query = "INSERT INTO Employee (id, username, password, office_id) VALUES (?, ?, ?, ?)";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, employee.getId());
@@ -93,13 +86,19 @@ public class EmployeeRepository implements Repository<Integer, Employee> {
 
     @Override
     public Optional<Employee> delete(Integer id) {
+        logger.info("Delete Employee with ID: {}", id);
+        Optional<Employee> employee = findById(id);
+        if (employee.isEmpty()) {
+            return Optional.empty();
+        }
+
         String query = "DELETE FROM Employee WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
             statement.executeUpdate();
-            return Optional.of(new Employee(id, null, null, null));
+            return employee;
         } catch (SQLException e) {
             logger.error("Database error while deleting Employee with id {}", id, e);
         }
@@ -108,16 +107,20 @@ public class EmployeeRepository implements Repository<Integer, Employee> {
 
     @Override
     public Optional<Employee> update(Employee employee) {
+        logger.info("Update Employee: {}", employee);
         String query = "UPDATE Employee SET username = ?, password = ?, office_id = ? WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, employee.getUsername());
             statement.setString(2, employee.getPassword());
             statement.setInt(3, employee.getOffice().getId());
             statement.setInt(4, employee.getId());
-            statement.executeUpdate();
-            return Optional.of(employee);
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                return Optional.of(employee);
+            }
         } catch (SQLException e) {
             logger.error("Database error while updating Employee with id {}", employee.getId(), e);
         }

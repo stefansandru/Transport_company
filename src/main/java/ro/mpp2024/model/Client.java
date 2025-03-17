@@ -1,25 +1,20 @@
 package ro.mpp2024.model;
 
-public class Client {
-    private Integer id;
+import ro.mpp2024.repository.ReservedSeatRepository;
+
+public class Client extends Entity<Integer> {
     private String name;
 
     // Constructors
-    public Client() {}
+    public Client() {
+        super();
+    }
 
     public Client(Integer id, String name) {
+        super(id);
         this.name = name;
     }
-
     // Getters and setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }

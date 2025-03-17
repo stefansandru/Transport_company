@@ -9,7 +9,7 @@ import java.util.Optional;
  * @param <E> -  type of entities saved in repository
  */
 
-public interface Repository<ID, E> {
+public interface IRepository<ID, E> {
 
     /**
      *

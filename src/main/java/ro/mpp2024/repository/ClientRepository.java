@@ -5,27 +5,17 @@ import ro.mpp2024.model.Client;
 import java.sql.*;
 import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class ClientRepository implements Repository<Integer, Client> {
-
-    Logger logger = LoggerFactory.getLogger(ClientRepository.class);
-
-    private final String url;
-    private final String user;
-    private final String password;
-
-    public ClientRepository(String url, String user, String password) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
+public class ClientRepository extends AbstractRepository<Integer, Client> implements IClientRepository {
+    public ClientRepository(Properties props) {
+        super(props);
     }
 
     @Override
     public Optional<Client> findById(Integer id) {
+        logger.info("Find Client by ID: {}", id);
         String query = "SELECT * FROM Client WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -41,9 +31,37 @@ public class ClientRepository implements Repository<Integer, Client> {
         return Optional.empty();
     }
 
-    public Optional<Client> findByName(String name) {
+    @Override
+    public Optional<Client> findByUsername(String username) {
+        logger.info("Find Client by username: {}", username);
         String query = "SELECT * FROM Client WHERE name = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+
+        try (Connection connection = jdbc.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                return Optional.of(new Client(id, username));
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while finding Client with username {}", username, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Client> findByUsernameAndPassword(String username, String password) {
+        return Optional.empty();
+    }
+
+    public Optional<Client> findByName(String name) {
+        logger.info("Find Client by name: {}", name);
+        String query = "SELECT * FROM Client WHERE name = ?";
+
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, name);
@@ -60,9 +78,11 @@ public class ClientRepository implements Repository<Integer, Client> {
 
     @Override
     public Iterable<Client> findAll() {
+        logger.info("Find all Clients");
         List<Client> clients = new ArrayList<>();
         String query = "SELECT * FROM Client";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+
+        try (Connection connection = jdbc.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
@@ -79,8 +99,10 @@ public class ClientRepository implements Repository<Integer, Client> {
 
     @Override
     public Optional<Client> save(Client client) {
+        logger.info("Save Client: {}", client);
         String query = "INSERT INTO Client (name) VALUES (?)";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setString(1, client.getName());
@@ -99,8 +121,10 @@ public class ClientRepository implements Repository<Integer, Client> {
 
     @Override
     public Optional<Client> delete(Integer id) {
+        logger.info("Delete Client with ID: {}", id);
         String query = "DELETE FROM Client WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -114,8 +138,10 @@ public class ClientRepository implements Repository<Integer, Client> {
 
     @Override
     public Optional<Client> update(Client client) {
+        logger.info("Update Client: {}", client);
         String query = "UPDATE Client SET name = ? WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, client.getName());

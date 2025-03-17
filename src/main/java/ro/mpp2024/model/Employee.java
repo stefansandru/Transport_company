@@ -1,29 +1,23 @@
 package ro.mpp2024.model;
 
-public class Employee {
-    private Integer id;
+public class Employee extends Entity<Integer> {
     private String username;
     private String password;
     private Office office;
 
     // Constructors
-    public Employee() {}
+    public Employee() {
+        super();
+    }
 
     public Employee(Integer id, String username, String password, Office office) {
+        super(id);
         this.username = username;
         this.password = password;
         this.office = office;
     }
 
     // Getters and setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
     }

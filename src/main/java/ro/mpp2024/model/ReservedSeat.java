@@ -2,8 +2,7 @@ package ro.mpp2024.model;
 
 import java.time.LocalDateTime;
 
-public class ReservedSeat {
-    private Integer id;
+public class ReservedSeat extends Entity<Integer> {
     private Trip trip;
     private Employee employee;
     private Integer seatNumber;
@@ -11,7 +10,9 @@ public class ReservedSeat {
     private LocalDateTime reservationDate = LocalDateTime.now();
 
     // Constructors
-    public ReservedSeat() {}
+    public ReservedSeat() {
+        super();
+    }
 
     public ReservedSeat(
             Integer id,
@@ -19,6 +20,7 @@ public class ReservedSeat {
             Employee employee,
             Integer seatNumber,
             Client client) {
+        super(id);
         this.trip = trip;
         this.employee = employee;
         this.seatNumber = seatNumber;
@@ -26,14 +28,6 @@ public class ReservedSeat {
     }
 
     // Getters and setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Trip getTrip() {
         return trip;
     }

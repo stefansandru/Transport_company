@@ -7,27 +7,17 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+public class ReservedSeatRepository extends AbstractRepository<Integer, ReservedSeat> implements IRepository<Integer, ReservedSeat> {
 
-public class ReservedSeatRepository implements Repository<Integer, ReservedSeat> {
-
-    private final Logger logger = LoggerFactory.getLogger(ReservedSeatRepository.class);
-
-    private final String url;
-    private final String user;
-    private final String password;
     private final TripRepository tripRepository;
     private final EmployeeRepository employeeRepository;
     private final ClientRepository clientRepository;
 
-    public ReservedSeatRepository(String url, String user, String password,
+    public ReservedSeatRepository(Properties props,
                                   TripRepository tripRepository,
                                   EmployeeRepository employeeRepository,
                                   ClientRepository clientRepository) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
+        super(props);
         this.tripRepository = tripRepository;
         this.employeeRepository = employeeRepository;
         this.clientRepository = clientRepository;
@@ -35,8 +25,9 @@ public class ReservedSeatRepository implements Repository<Integer, ReservedSeat>
 
     @Override
     public Optional<ReservedSeat> findById(Integer id) {
+        logger.info("Find ReservedSeat by ID: {}", id);
         String query = "SELECT * FROM ReservedSeats WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -53,9 +44,10 @@ public class ReservedSeatRepository implements Repository<Integer, ReservedSeat>
 
     @Override
     public List<ReservedSeat> findAll() {
+        logger.info("Find all ReservedSeats");
         List<ReservedSeat> reservedSeats = new ArrayList<>();
         String query = "SELECT * FROM ReservedSeats";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
@@ -69,9 +61,10 @@ public class ReservedSeatRepository implements Repository<Integer, ReservedSeat>
     }
 
     public List<ReservedSeat> findByTripId(Integer tripId) {
+        logger.info("Find ReservedSeats by Trip ID: {}", tripId);
         List<ReservedSeat> reservedSeats = new ArrayList<>();
         String query = "SELECT * FROM ReservedSeats WHERE trip_id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, tripId);
@@ -88,8 +81,9 @@ public class ReservedSeatRepository implements Repository<Integer, ReservedSeat>
 
     @Override
     public Optional<ReservedSeat> save(ReservedSeat reservedSeat) {
-        String query = "INSERT INTO ReservedSeats(trip_id, employee_id, seat_number, client_id) VALUES(?, ?, ?, ?)";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        logger.info("Save ReservedSeat: {}", reservedSeat);
+        String query = "INSERT INTO ReservedSeats(trip_id, employee_id, seat_number, client_id, reservation_date) VALUES(?, ?, ?, ?, ?)";
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setInt(1, reservedSeat.getTrip().getId());
@@ -112,13 +106,14 @@ public class ReservedSeatRepository implements Repository<Integer, ReservedSeat>
 
     @Override
     public Optional<ReservedSeat> delete(Integer id) {
+        logger.info("Delete ReservedSeat with ID: {}", id);
         Optional<ReservedSeat> reservedSeatToDelete = findById(id);
         if (reservedSeatToDelete.isEmpty()) {
             return Optional.empty();
         }
 
         String query = "DELETE FROM ReservedSeats WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -134,8 +129,9 @@ public class ReservedSeatRepository implements Repository<Integer, ReservedSeat>
 
     @Override
     public Optional<ReservedSeat> update(ReservedSeat reservedSeat) {
+        logger.info("Update ReservedSeat: {}", reservedSeat);
         String query = "UPDATE ReservedSeats SET trip_id=?, employee_id=?, seat_number=?, client_id=?, reservation_date=? WHERE id=?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, reservedSeat.getTrip().getId());

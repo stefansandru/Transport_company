@@ -3,15 +3,16 @@ package ro.mpp2024.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Trip {
-    private Integer id;
+public class Trip extends Entity<Integer> {
     private Destination destination;
     private LocalDate departureDate;
     private LocalTime departureTime;
     private Integer availableSeats;
 
     // Constructors
-    public Trip() {}
+    public Trip() {
+        super();
+    }
 
     public Trip(
             Integer id,
@@ -19,6 +20,7 @@ public class Trip {
             LocalDate departureDate,
             LocalTime departureTime,
             Integer availableSeats) {
+        super(id);
         this.destination = destination;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
@@ -26,14 +28,6 @@ public class Trip {
     }
 
     // Getters and setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Destination getDestination() {
         return destination;
     }

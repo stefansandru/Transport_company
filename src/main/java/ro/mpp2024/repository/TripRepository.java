@@ -1,7 +1,6 @@
 package ro.mpp2024.repository;
 
 import ro.mpp2024.model.Trip;
-import ro.mpp2024.model.Destination;
 
 import java.sql.*;
 import java.sql.Date;
@@ -9,26 +8,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+public class TripRepository extends AbstractRepository<Integer, Trip> implements IRepository<Integer, Trip> {
 
-public class TripRepository implements Repository <Integer, Trip> {
-
-    private final Logger logger = LoggerFactory.getLogger(TripRepository.class);
-
-    private final String url;
-    private final String user;
-    private final String password;
     private final DestinationRepository destinationRepository;
 
-    public TripRepository(
-            String url,
-            String user,
-            String password,
-            DestinationRepository destinationRepository) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
+    public TripRepository(Properties properties, DestinationRepository destinationRepository) {
+        super(properties);
         this.destinationRepository = destinationRepository;
     }
 
@@ -55,8 +40,9 @@ public class TripRepository implements Repository <Integer, Trip> {
 
     @Override
     public Optional<Trip> findById(Integer id) {
+        logger.info("Find Trip by ID: {}", id);
         String query = "SELECT * FROM Trip WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -73,9 +59,10 @@ public class TripRepository implements Repository <Integer, Trip> {
 
     @Override
     public List<Trip> findAll() {
+        logger.info("Find all Trips");
         List<Trip> trips = new ArrayList<>();
         String query = "SELECT * FROM Trip";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
@@ -89,9 +76,10 @@ public class TripRepository implements Repository <Integer, Trip> {
     }
 
     public List<Trip> findByDestinationId(Integer destinationId) {
+        logger.info("Find Trips by Destination ID: {}", destinationId);
         List<Trip> trips = new ArrayList<>();
         String query = "SELECT * FROM Trip WHERE destination_id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, destinationId);
@@ -107,9 +95,10 @@ public class TripRepository implements Repository <Integer, Trip> {
     }
 
     public List<Trip> findByDepartureDate(LocalDate departureDate) {
+        logger.info("Find Trips by Departure Date: {}", departureDate);
         List<Trip> trips = new ArrayList<>();
         String query = "SELECT * FROM Trip WHERE departure_date = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setDate(1, Date.valueOf(departureDate));
@@ -126,8 +115,9 @@ public class TripRepository implements Repository <Integer, Trip> {
 
     @Override
     public Optional<Trip> save(Trip trip) {
+        logger.info("Save Trip: {}", trip);
         String query = "INSERT INTO Trip(destination_id, departure_date, departure_time, available_seats) VALUES(?, ?, ?, ?)";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setInt(1, trip.getDestination().getId());
@@ -150,24 +140,33 @@ public class TripRepository implements Repository <Integer, Trip> {
     }
 
     @Override
-    public Optional<Trip> delete(Integer Id) {
+    public Optional<Trip> delete(Integer id) {
+        logger.info("Delete Trip with ID: {}", id);
+        Optional<Trip> tripToDelete = findById(id);
+        if (tripToDelete.isEmpty()) {
+            return Optional.empty();
+        }
+
         String query = "DELETE FROM Trip WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setInt(1, Id);
-            statement.executeUpdate();
-            return Optional.of(new Trip(Id, null, null, null, 0));
+            statement.setInt(1, id);
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows > 0) {
+                return tripToDelete;
+            }
         } catch (SQLException e) {
-            logger.error("Database error while deleting Trip with id {}", Id, e);
+            logger.error("Database error while deleting Trip with id {}", id, e);
         }
         return Optional.empty();
     }
 
     @Override
     public Optional<Trip> update(Trip trip) {
+        logger.info("Update Trip: {}", trip);
         String query = "UPDATE Trip SET destination_id = ?, departure_date = ?, departure_time = ?, available_seats = ? WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, trip.getDestination().getId());
@@ -176,8 +175,10 @@ public class TripRepository implements Repository <Integer, Trip> {
             statement.setInt(4, trip.getAvailableSeats());
             statement.setInt(5, trip.getId());
 
-            statement.executeUpdate();
-            return Optional.of(trip);
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows > 0) {
+                return Optional.of(trip);
+            }
         } catch (SQLException e) {
             logger.error("Database error while updating Trip", e);
         }

@@ -5,31 +5,21 @@ import ro.mpp2024.model.Office;
 import java.sql.*;
 import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+public class OfficeRepository extends AbstractRepository<Integer, Office> implements IRepository<Integer, Office> {
 
-public class OfficeRepository implements Repository<Integer, Office> {
-
-    private final Logger logger = LoggerFactory.getLogger(OfficeRepository.class);
-
-    private final String url;
-    private final String user;
-    private final String password;
-
-    public OfficeRepository(String url, String user, String password) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
+    public OfficeRepository(Properties props) {
+        super(props);
     }
 
     @Override
     public Optional<Office> findById(Integer id) {
+        logger.info("Find Office by ID: {}", id);
         if (id == null) {
             throw new IllegalArgumentException("ID must not be null");
         }
 
         String query = "SELECT * FROM Office WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -47,9 +37,10 @@ public class OfficeRepository implements Repository<Integer, Office> {
 
     @Override
     public List<Office> findAll() {
+        logger.info("Find all Offices");
         List<Office> offices = new ArrayList<>();
         String query = "SELECT * FROM Office";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
@@ -66,12 +57,13 @@ public class OfficeRepository implements Repository<Integer, Office> {
 
     @Override
     public Optional<Office> save(Office office) {
+        logger.info("Save Office: {}", office);
         if (office == null) {
             throw new IllegalArgumentException("Office must not be null");
         }
 
         String query = "INSERT INTO Office (id, name) VALUES (?, ?)";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, office.getId());
@@ -89,6 +81,7 @@ public class OfficeRepository implements Repository<Integer, Office> {
 
     @Override
     public Optional<Office> delete(Integer id) {
+        logger.info("Delete Office with ID: {}", id);
         if (id == null) {
             throw new IllegalArgumentException("ID must not be null");
         }
@@ -99,7 +92,7 @@ public class OfficeRepository implements Repository<Integer, Office> {
         }
 
         String query = "DELETE FROM Office WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, id);
@@ -116,16 +109,17 @@ public class OfficeRepository implements Repository<Integer, Office> {
 
     @Override
     public Optional<Office> update(Office office) {
+        logger.info("Update Office: {}", office);
         if (office == null) {
             throw new IllegalArgumentException("Office must not be null");
         }
 
         String query = "UPDATE Office SET name = ? WHERE id = ?";
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, office.getName());
-            statement.setInt(3, office.getId());
+            statement.setInt(2, office.getId()); // Fixed index from 3 to 2
 
             int affectedRows = statement.executeUpdate();
             if (affectedRows > 0) {

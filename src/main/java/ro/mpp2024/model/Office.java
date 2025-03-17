@@ -1,25 +1,19 @@
 package ro.mpp2024.model;
 
-public class Office {
-    private Integer id;
+public class Office extends Entity<Integer> {
     private String name;
 
     // Constructors
-    public Office() {}
+    public Office() {
+        super();
+    }
 
     public Office(Integer id, String name) {
+        super(id);
         this.name = name;
     }
 
     // Getters and setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
