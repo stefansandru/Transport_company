@@ -7,7 +7,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class ReservedSeatRepository extends AbstractRepository<Integer, ReservedSeat> implements IRepository<Integer, ReservedSeat> {
+public class ReservedSeatRepository extends AbstractRepository<Integer, ReservedSeat> implements IReservedSeatRepository {
 
     private final TripRepository tripRepository;
     private final EmployeeRepository employeeRepository;

@@ -6,7 +6,7 @@ import ro.mpp2024.model.Office;
 import java.sql.*;
 import java.util.*;
 
-public class EmployeeRepository extends AbstractRepository<Integer, Employee> implements IRepository<Integer, Employee> {
+public class EmployeeRepository extends AbstractRepository<Integer, Employee> implements IEmployeeRepository {
 
     private final OfficeRepository officeRepository;
 
@@ -123,6 +123,29 @@ public class EmployeeRepository extends AbstractRepository<Integer, Employee> im
             }
         } catch (SQLException e) {
             logger.error("Database error while updating Employee with id {}", employee.getId(), e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Employee> findByUsernameAndPassword(String username, String password) {
+        logger.info("Find Employee by username and password");
+        String query = "SELECT * FROM Employee WHERE username = ? AND password = ?";
+        try (Connection connection = jdbc.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                Integer officeId = resultSet.getInt("office_id");
+                Office office = officeRepository.findById(officeId).orElse(null);
+                return Optional.of(new Employee(id, username, password, office));
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while finding Employee by username and password", e);
         }
         return Optional.empty();
     }

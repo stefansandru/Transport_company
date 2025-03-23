@@ -5,7 +5,7 @@ import ro.mpp2024.model.Destination;
 import java.sql.*;
 import java.util.*;
 
-public class DestinationRepository extends AbstractRepository<Integer, Destination> implements IRepository<Integer, Destination> {
+public class DestinationRepository extends AbstractRepository<Integer, Destination> implements IDestinationRepository {
 
     public DestinationRepository(Properties props) {
 
@@ -33,23 +33,24 @@ public class DestinationRepository extends AbstractRepository<Integer, Destinati
         return Optional.empty();
     }
 
-    public Optional<Destination> findByName(String name) {
+    public Iterable<Destination> findByName(String name) {
         logger.info("Find Destination by name: {}", name);
         String query = "SELECT * FROM Destination WHERE name = ?";
-
+        List<Destination> destinations = new ArrayList<>();
+    
         try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-
+    
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                return Optional.of(new Destination(resultSet.getInt("id"), resultSet.getString("name")));
+    
+            while (resultSet.next()) {
+                destinations.add(new Destination(resultSet.getInt("id"), resultSet.getString("name")));
             }
         } catch (SQLException e) {
             logger.error("Database error while finding Destination with name {}", name, e);
         }
-        return Optional.empty();
+        return destinations;
     }
 
     @Override

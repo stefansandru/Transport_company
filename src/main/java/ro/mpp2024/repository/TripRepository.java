@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-public class TripRepository extends AbstractRepository<Integer, Trip> implements IRepository<Integer, Trip> {
+public class TripRepository extends AbstractRepository<Integer, Trip> implements ITripRepository {
 
     private final DestinationRepository destinationRepository;
 
@@ -183,5 +183,25 @@ public class TripRepository extends AbstractRepository<Integer, Trip> implements
             logger.error("Database error while updating Trip", e);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Iterable<Trip> findAllByName(String name) {
+        logger.info("Find all Trips by name: {}", name);
+        List<Trip> trips = new ArrayList<>();
+        String query = "SELECT * FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE d.name = ?";
+        try (Connection connection = jdbc.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                extractTripFromResultSet(resultSet).ifPresent(trips::add);
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while finding all Trips by name", e);
+        }
+        return trips;
     }
 }

@@ -5,7 +5,7 @@ import ro.mpp2024.model.Office;
 import java.sql.*;
 import java.util.*;
 
-public class OfficeRepository extends AbstractRepository<Integer, Office> implements IRepository<Integer, Office> {
+public class OfficeRepository extends AbstractRepository<Integer, Office> implements IOfficeRepository {
 
     public OfficeRepository(Properties props) {
         super(props);
@@ -127,6 +127,30 @@ public class OfficeRepository extends AbstractRepository<Integer, Office> implem
             }
         } catch (SQLException e) {
             logger.error("Database error while updating Office: {}", office, e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Office> findByName(String name) {
+        logger.info("Find Office by name: {}", name);
+        if (name == null) {
+            throw new IllegalArgumentException("Name must not be null");
+        }
+
+        String query = "SELECT * FROM Office WHERE name = ?";
+        try (Connection connection = jdbc.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                return Optional.of(new Office(id, name));
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while finding Office with name {}", name, e);
         }
         return Optional.empty();
     }
