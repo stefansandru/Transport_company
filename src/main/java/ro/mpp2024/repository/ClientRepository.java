@@ -6,8 +6,13 @@ import java.sql.*;
 import java.util.*;
 
 public class ClientRepository extends AbstractRepository<Integer, Client> implements IClientRepository {
+//    public ClientRepository() {
+//        super();
+//    }
+
     public ClientRepository(Properties props) {
         super(props);
+        logger.info("Initializing CarsDBRepository with properties: {} ",props);
     }
 
     @Override

@@ -8,6 +8,7 @@ import java.util.*;
 public class DestinationRepository extends AbstractRepository<Integer, Destination> implements IRepository<Integer, Destination> {
 
     public DestinationRepository(Properties props) {
+
         super(props);
     }
 

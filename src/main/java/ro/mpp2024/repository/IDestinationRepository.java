@@ -12,5 +12,5 @@ public interface IDestinationRepository extends IRepository<Integer, Destination
      * @return an {@code Optional} encapsulating the destination with the given name
      * @throws IllegalArgumentException if name is null
      */
-    Optional<Destination> findByName(String name);
+    Iterable<Destination> findByName(String name);
 }

@@ -1,7 +1,5 @@
 package ro.mpp2024.model;
 
-import ro.mpp2024.repository.ReservedSeatRepository;
-
 public class Client extends Entity<Integer> {
     private String name;
 
