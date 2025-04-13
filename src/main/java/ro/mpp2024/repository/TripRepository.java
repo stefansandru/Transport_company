@@ -17,12 +17,48 @@ public class TripRepository extends AbstractRepository<Integer, Trip> implements
         this.destinationRepository = destinationRepository;
     }
 
+//    private Optional<Trip> extractTripFromResultSet(ResultSet resultSet) {
+//        try {
+//            Integer id = resultSet.getInt("id");
+//            Integer destinationId = resultSet.getInt("destination_id");
+//            LocalDate departureDate = resultSet.getDate("departure_date").toLocalDate();
+//            LocalTime departureTime = resultSet.getTime("departure_time").toLocalTime();
+//            Integer availableSeats = resultSet.getInt("available_seats");
+//
+//            return destinationRepository.findById(destinationId).map(
+//                    destination -> new Trip(
+//                            id,
+//                            destination,
+//                            departureDate,
+//                            departureTime,
+//                            availableSeats));
+//        } catch (SQLException e) {
+//            logger.error("Error while extracting Trip from ResultSet", e);
+//            return Optional.empty();
+//        }
+//    }
+
     private Optional<Trip> extractTripFromResultSet(ResultSet resultSet) {
         try {
             Integer id = resultSet.getInt("id");
             Integer destinationId = resultSet.getInt("destination_id");
-            LocalDate departureDate = resultSet.getDate("departure_date").toLocalDate();
-            LocalTime departureTime = resultSet.getTime("departure_time").toLocalTime();
+
+            // Get date as string and parse it
+            String departureDateStr = resultSet.getString("departure_date");
+            if (departureDateStr == null) {
+                logger.error("departure_date is null for Trip ID: {}", id);
+                return Optional.empty();
+            }
+            LocalDate departureDate = LocalDate.parse(departureDateStr);
+
+            // Get time as string and parse it
+            String departureTimeStr = resultSet.getString("departure_time");
+            if (departureTimeStr == null) {
+                logger.error("departure_time is null for Trip ID: {}", id);
+                return Optional.empty();
+            }
+            LocalTime departureTime = LocalTime.parse(departureTimeStr);
+
             Integer availableSeats = resultSet.getInt("available_seats");
 
             return destinationRepository.findById(destinationId).map(
@@ -61,7 +97,7 @@ public class TripRepository extends AbstractRepository<Integer, Trip> implements
     public List<Trip> findAll() {
         logger.info("Find all Trips");
         List<Trip> trips = new ArrayList<>();
-        String query = "SELECT * FROM Trip";
+   String query = "select * from Trip";
         try (Connection connection = jdbc.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
@@ -121,8 +157,8 @@ public class TripRepository extends AbstractRepository<Integer, Trip> implements
              PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setInt(1, trip.getDestination().getId());
-            statement.setDate(2, Date.valueOf(trip.getDepartureDate()));
-            statement.setTime(3, Time.valueOf(trip.getDepartureTime()));
+            statement.setString(2, trip.getDepartureDate().toString());  // Use toString() instead of Date.valueOf()
+            statement.setString(3, trip.getDepartureTime().toString());  // Use toString() instead of Time.valueOf()
             statement.setInt(4, trip.getAvailableSeats());
 
             statement.executeUpdate();
@@ -170,8 +206,8 @@ public class TripRepository extends AbstractRepository<Integer, Trip> implements
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setInt(1, trip.getDestination().getId());
-            statement.setDate(2, Date.valueOf(trip.getDepartureDate()));
-            statement.setTime(3, Time.valueOf(trip.getDepartureTime()));
+            statement.setString(2, trip.getDepartureDate().toString());  // Use toString() instead of Date.valueOf()
+            statement.setString(3, trip.getDepartureTime().toString());  // Use toString() instead of Time.valueOf()
             statement.setInt(4, trip.getAvailableSeats());
             statement.setInt(5, trip.getId());
 
@@ -203,5 +239,26 @@ public class TripRepository extends AbstractRepository<Integer, Trip> implements
             logger.error("Database error while finding all Trips by name", e);
         }
         return trips;
+    }
+
+    @Override
+    public Optional<Trip> findByDestinationAndDateAndTime(String destination, String date, String time) {
+        logger.info("Find Trip by destination {} and date: {}, time: {}", destination, date, time);
+        String query = "SELECT * FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE d.name = ? AND t.departure_date = ? AND t.departure_time = ?";
+        try (Connection connection = jdbc.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, destination);
+            statement.setString(2, date);
+            statement.setString(3, time);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return extractTripFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            logger.error("Database error while finding Trip by destination {} and date: {}, time: {}", destination, date, time, e);
+        }
+        return Optional.empty();
     }
 }

@@ -57,11 +57,6 @@ public class ClientRepository extends AbstractRepository<Integer, Client> implem
         return Optional.empty();
     }
 
-    @Override
-    public Optional<Client> findByUsernameAndPassword(String username, String password) {
-        return Optional.empty();
-    }
-
     public Optional<Client> findByName(String name) {
         logger.info("Find Client by name: {}", name);
         String query = "SELECT * FROM Client WHERE name = ?";

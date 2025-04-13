@@ -3,6 +3,7 @@ package ro.mpp2024.repository;
 import ro.mpp2024.model.Employee;
 import ro.mpp2024.model.Office;
 
+import java.awt.image.BufferedImageOp;
 import java.sql.*;
 import java.util.*;
 
@@ -128,18 +129,18 @@ public class EmployeeRepository extends AbstractRepository<Integer, Employee> im
     }
 
     @Override
-    public Optional<Employee> findByUsernameAndPassword(String username, String password) {
-        logger.info("Find Employee by username and password");
-        String query = "SELECT * FROM Employee WHERE username = ? AND password = ?";
+    public Optional<Employee> findByUsername(String username) {
+        logger.info("Find Employee by username");
+        String query = "SELECT * FROM Employee WHERE username = ?";
         try (Connection connection = jdbc.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, username);
-            statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 Integer id = resultSet.getInt("id");
+                String password = resultSet.getString("password");
                 Integer officeId = resultSet.getInt("office_id");
                 Office office = officeRepository.findById(officeId).orElse(null);
                 return Optional.of(new Employee(id, username, password, office));

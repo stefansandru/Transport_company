@@ -11,41 +11,21 @@ import java.util.Properties;
 
 public abstract class AbstractRepository<ID extends Comparable<ID>, E extends Entity<ID>> implements  IRepository<ID, E> {
     protected JdbcUtils jdbc;
-//    protected static final Logger logger = LogManager.getLogger(AbstractRepository.class);
     protected static final Logger logger= LogManager.getLogger();
-
-
-    // Default constructor that loads properties automatically
-//    public AbstractRepository() {
-//        this(dbUtils.loadProperties("database.properties"));
-//    }
 
     public AbstractRepository(Properties props) {
         jdbc=new JdbcUtils(props);
     }
 
     @Override
-    public Optional<E> findById(ID id) {
-        return Optional.empty();
-    }
+    public abstract Optional<E> findById(ID id);
 
     @Override
-    public Iterable<E> findAll() {
-        return null;
-    }
+    public abstract Iterable<E> findAll();
 
     @Override
-    public Optional<E> save(E entity) {
-        return Optional.empty();
-    }
+    public abstract Optional<E> delete(ID id);
 
     @Override
-    public Optional<E> delete(ID id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<E> update(E entity) {
-        return Optional.empty();
-    }
+    public abstract Optional<E> update(E entity);
 }

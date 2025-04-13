@@ -7,7 +7,6 @@ public class ReservedSeat extends Entity<Integer> {
     private Employee employee;
     private Integer seatNumber;
     private Client client;
-    private LocalDateTime reservationDate = LocalDateTime.now();
 
     // Constructors
     public ReservedSeat() {
@@ -58,13 +57,5 @@ public class ReservedSeat extends Entity<Integer> {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    public LocalDateTime getReservationDate() {
-        return reservationDate;
-    }
-
-    public void setReservationDate(LocalDateTime reservationDate) {
-        this.reservationDate = reservationDate;
     }
 }

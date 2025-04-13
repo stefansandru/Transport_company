@@ -10,9 +10,8 @@ public interface IEmployeeRepository extends  IRepository<Integer, Employee>{
     /**
      *
      * @param username - the username of the employee to be returned
-     * @param password - the password of the employee to be returned
      * @return an {@code Optional} encapsulating the employee with the given username
      * @throws IllegalArgumentException if username is null
      */
-    Optional<Employee> findByUsernameAndPassword(String username, String password);
+    Optional<Employee> findByUsername(String username);
 }

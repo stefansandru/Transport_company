@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="ro.mpp2024.controller.MainAppController" spacing="10" alignment="CENTER">
+    <TableView fx:id="tripsTable">
+        <columns>
+            <TableColumn fx:id="destinationColumn" text="Destination"/>
+            <TableColumn fx:id="dateColumn" text="Date"/>
+            <TableColumn fx:id="timeColumn" text="Time"/>
+            <TableColumn fx:id="seatsColumn" text="Available Seats"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <TextField fx:id="searchDestinationField" promptText="Destination"/>
+        <DatePicker fx:id="searchDateField"/>
+        <TextField fx:id="searchTimeField" promptText="Time (HH:MM)"/>
+        <Button text="Search" onAction="#handleSearch"/>
+    </HBox>
+    <TableView fx:id="seatsTable">
+        <columns>
+            <TableColumn fx:id="seatNumberColumn" text="Seat Number"/>
+            <TableColumn fx:id="clientNameColumn" text="Client Name"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <TextField fx:id="clientNameField" promptText="Client Name"/>
+        <TextField fx:id="seatNumbersField" promptText="Seat Numbers (e.g., 1,2,3)"/>
+        <Button text="Reserve" onAction="#handleReserve"/>
+    </HBox>
+    <Button text="Logout" onAction="#handleLogout"/>
+</VBox>
