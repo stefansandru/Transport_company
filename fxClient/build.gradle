@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+group = 'ro.mpp2024'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':model')
+    implementation project(':services')
+    implementation project(':networking')
+    implementation project(':server')
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'com.google.guava:guava:32.1.2-jre'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    implementation 'org.springframework.security:spring-security-core:6.3.5'
+
+    implementation group: 'org.openjfx', name: 'javafx-base', version: '17', classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: '17', classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: '17', classifier: 'mac'
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: '17', classifier: 'mac'
+
+    runtimeOnly group: 'org.xerial', name: 'sqlite-jdbc', version: '3.42.0.0'
+
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ro.mpp2024.StartJsonFXClient'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+javafx {
+    version = "21.0.6" // 17
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    mainClass = 'ro.mpp2024.StartJsonFXClient'
+    applicationDefaultJvmArgs = [
+            '--module-path', '/Users/stefansandru/javafx-sdk-21.0.6/lib',
+            '--add-modules', 'javafx.controls,javafx.fxml'
+//            '-XstartOnFirstThread'
+    ]
+}
+
+
+test {
+    useJUnitPlatform()
+}

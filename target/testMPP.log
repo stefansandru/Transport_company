@@ -13227,6 +13227,987 @@ org.sqlite.SQLiteException: [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint faile
 13 Apr 2025 19:57:23,551 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
 13 Apr 2025 19:57:23,551 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
 13 Apr 2025 19:57:23,551 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3661484)
+13 Apr 2025 21:46:01,493 INFO  ro.mpp2024.repository.ClientRepository 15 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:firmaTransport.db} 
+13 Apr 2025 21:46:01,496 INFO  ro.mpp2024.repository.OfficeRepository 40 findAll - Find all Offices
+13 Apr 2025 21:46:01,497 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:01,497 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:01,497 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:01,497 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:01,497 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:01,894 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3fd168da)
+13 Apr 2025 21:46:06,163 INFO  ro.mpp2024.repository.EmployeeRepository 133 findByUsername - Find Employee by username
+13 Apr 2025 21:46:06,163 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,164 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,164 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,164 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,164 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,165 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@759db5c5)
+13 Apr 2025 21:46:06,169 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:06,169 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,169 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,169 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,169 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,169 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,170 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6246c066)
+13 Apr 2025 21:46:06,170 INFO  ro.mpp2024.repository.EmployeeRepository 133 findByUsername - Find Employee by username
+13 Apr 2025 21:46:06,170 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,171 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,171 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,171 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,171 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,171 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@17bd8b8b)
+13 Apr 2025 21:46:06,172 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:06,172 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,172 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,172 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,172 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,172 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,172 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@44924dc8)
+13 Apr 2025 21:46:06,279 INFO  ro.mpp2024.repository.TripRepository 98 findAll - Find all Trips
+13 Apr 2025 21:46:06,280 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,280 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,280 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,280 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,280 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,280 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1659555f)
+13 Apr 2025 21:46:06,282 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 1
+13 Apr 2025 21:46:06,283 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,283 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,283 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,283 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,283 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,283 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3f650f2f)
+13 Apr 2025 21:46:06,284 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 2
+13 Apr 2025 21:46:06,284 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,284 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,284 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,285 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,285 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,285 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@64851921)
+13 Apr 2025 21:46:06,285 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 3
+13 Apr 2025 21:46:06,285 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,285 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,285 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,285 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,286 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,286 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@63eef463)
+13 Apr 2025 21:46:06,286 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:06,286 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,286 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,286 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,286 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,286 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,286 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@59cc8fe8)
+13 Apr 2025 21:46:06,287 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 5
+13 Apr 2025 21:46:06,287 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:06,287 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:06,287 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:06,287 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:06,287 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:06,287 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2f481517)
+13 Apr 2025 21:46:14,124 INFO  ro.mpp2024.repository.ReservedSeatRepository 179 findByTripDestinationDateTime - Find ReservedSeat by trip destination, date and time: Miami: 2025-04-04, 14:00
+13 Apr 2025 21:46:14,125 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,125 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,126 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,126 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,126 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,127 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2542de3f)
+13 Apr 2025 21:46:14,128 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,128 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,129 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,129 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,129 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,129 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,130 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@322ed406)
+13 Apr 2025 21:46:14,131 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,131 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,131 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,131 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,131 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,132 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,132 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@770825f6)
+13 Apr 2025 21:46:14,134 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,135 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,135 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,135 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,135 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,135 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,135 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5a0c8a8a)
+13 Apr 2025 21:46:14,136 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,136 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,136 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,136 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,136 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,137 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,137 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7f99f5ee)
+13 Apr 2025 21:46:14,138 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 1
+13 Apr 2025 21:46:14,138 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,138 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,138 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,138 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,138 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,139 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@68bb7d7b)
+13 Apr 2025 21:46:14,140 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,140 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,140 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,140 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,141 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,141 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,141 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7d86a60b)
+13 Apr 2025 21:46:14,142 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,142 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,142 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,142 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,142 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,142 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,143 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@44736785)
+13 Apr 2025 21:46:14,143 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 2
+13 Apr 2025 21:46:14,143 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,144 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,144 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,144 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,144 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,144 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@78c843ac)
+13 Apr 2025 21:46:14,145 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 2
+13 Apr 2025 21:46:14,146 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,146 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,146 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,146 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,146 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,146 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@668b94e9)
+13 Apr 2025 21:46:14,147 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,147 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,147 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,147 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,147 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,147 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,148 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@b078990)
+13 Apr 2025 21:46:14,148 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,148 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,148 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,148 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,148 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,148 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,149 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3996e134)
+13 Apr 2025 21:46:14,149 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 3
+13 Apr 2025 21:46:14,149 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,149 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,149 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,150 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,150 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,150 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4e12304c)
+13 Apr 2025 21:46:14,150 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 3
+13 Apr 2025 21:46:14,150 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,150 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,151 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,151 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,151 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,151 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7484d9bb)
+13 Apr 2025 21:46:14,151 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,151 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,152 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,152 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,152 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,152 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,152 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@43f895b2)
+13 Apr 2025 21:46:14,153 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,153 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,153 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,153 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,153 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,153 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,153 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4d6943b8)
+13 Apr 2025 21:46:14,154 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,154 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,154 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,154 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,154 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,154 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,154 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@12a68a09)
+13 Apr 2025 21:46:14,155 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,155 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,155 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,155 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,155 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,155 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,155 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@40bdc0e7)
+13 Apr 2025 21:46:14,156 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:14,156 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,156 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,156 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,156 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,156 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,156 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@476f9847)
+13 Apr 2025 21:46:14,156 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,157 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,157 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,157 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,157 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,157 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,157 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@401c7791)
+13 Apr 2025 21:46:14,157 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,157 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,158 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,158 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,158 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,158 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,158 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@66cc5b59)
+13 Apr 2025 21:46:14,162 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,162 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,162 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,162 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,162 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,162 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,162 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@48d8059f)
+13 Apr 2025 21:46:14,163 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,163 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,163 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,163 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,163 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,163 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,163 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@73ce0163)
+13 Apr 2025 21:46:14,164 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:14,164 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,164 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,164 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,164 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,164 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,164 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@504d4074)
+13 Apr 2025 21:46:14,164 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,164 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,165 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,165 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,165 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,165 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,165 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@54dfdfb7)
+13 Apr 2025 21:46:14,165 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,165 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,165 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,166 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,166 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,166 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,166 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5ca3dc4e)
+13 Apr 2025 21:46:14,166 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,166 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,167 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,167 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5fe51ba0)
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,167 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,167 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,167 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,168 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6511bec8)
+13 Apr 2025 21:46:14,168 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 3
+13 Apr 2025 21:46:14,168 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,168 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,168 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,168 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,168 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,169 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4f99e7ba)
+13 Apr 2025 21:46:14,169 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,169 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,169 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,169 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,169 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,169 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,169 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@d1a03ab)
+13 Apr 2025 21:46:14,170 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,170 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,170 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,170 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,170 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,170 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,170 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7a5531b3)
+13 Apr 2025 21:46:14,170 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,170 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,170 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,170 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,171 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,171 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,171 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@12da37cf)
+13 Apr 2025 21:46:14,171 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,171 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,171 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,171 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,171 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,171 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,172 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@12feb619)
+13 Apr 2025 21:46:14,172 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 3
+13 Apr 2025 21:46:14,172 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,172 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,172 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,172 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,172 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,172 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4fa4e8b6)
+13 Apr 2025 21:46:14,173 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,173 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,173 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,173 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,173 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,173 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,174 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1c2f9058)
+13 Apr 2025 21:46:14,174 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,174 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,174 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,174 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,174 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,174 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,174 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5f08b85d)
+13 Apr 2025 21:46:14,175 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,175 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,175 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,175 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,175 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,175 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,175 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@38a183db)
+13 Apr 2025 21:46:14,175 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,175 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,175 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,176 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@50282d21)
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 2
+13 Apr 2025 21:46:14,176 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,176 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,176 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,177 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@30e5ca2c)
+13 Apr 2025 21:46:14,177 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,177 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,177 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,177 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,177 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,177 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,177 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2a35463d)
+13 Apr 2025 21:46:14,177 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,177 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,178 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,178 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1e3eb7fb)
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,178 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,178 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,178 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,179 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@feed038)
+13 Apr 2025 21:46:14,179 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,179 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,179 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,179 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,179 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,179 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,179 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@11c4df43)
+13 Apr 2025 21:46:14,179 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 2
+13 Apr 2025 21:46:14,180 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,180 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,180 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,180 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,180 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,180 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@11c077e8)
+13 Apr 2025 21:46:14,180 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:14,180 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,180 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,180 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,180 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,181 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,181 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7aaa9b44)
+13 Apr 2025 21:46:14,181 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,181 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,181 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,181 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,181 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,181 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,181 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@33cfb39)
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:14,182 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,182 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,182 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@343502da)
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:14,182 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,182 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,182 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,183 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@26584c83)
+13 Apr 2025 21:46:14,183 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:14,183 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,183 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,183 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,183 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,183 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,183 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@88683b7)
+13 Apr 2025 21:46:14,184 INFO  ro.mpp2024.repository.TripRepository 246 findByDestinationAndDateAndTime - Find Trip by destination Miami and date: 2025-04-04, time: 14:00
+13 Apr 2025 21:46:14,184 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,185 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,185 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7e33f76c)
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,185 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,185 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,185 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,186 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4bff018f)
+13 Apr 2025 21:46:14,186 INFO  ro.mpp2024.repository.TripRepository 98 findAll - Find all Trips
+13 Apr 2025 21:46:14,186 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,186 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,186 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,186 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,186 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,187 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@597a69f3)
+13 Apr 2025 21:46:14,187 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 1
+13 Apr 2025 21:46:14,187 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,187 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,187 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,187 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,187 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,187 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4a4916ed)
+13 Apr 2025 21:46:14,187 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 2
+13 Apr 2025 21:46:14,187 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,187 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,187 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,188 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2ba0005f)
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 3
+13 Apr 2025 21:46:14,188 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,188 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,188 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@18608fdd)
+13 Apr 2025 21:46:14,188 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:14,188 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,189 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,189 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@125f48d3)
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 5
+13 Apr 2025 21:46:14,189 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:14,189 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:14,189 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:14,189 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@10a3ca0b)
+13 Apr 2025 21:46:23,420 INFO  ro.mpp2024.repository.ClientRepository 41 findByUsername - Find Client by username: kk
+13 Apr 2025 21:46:23,421 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:23,421 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:23,421 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:23,421 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:23,421 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:23,423 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7d997a41)
+13 Apr 2025 21:46:23,424 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:23,424 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:23,424 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:23,424 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:23,424 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:23,425 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@125147e5)
+13 Apr 2025 21:46:23,431 INFO  ro.mpp2024.repository.TripRepository 203 update - Update Trip: ro.mpp2024.model.Trip@2e8452be
+13 Apr 2025 21:46:23,431 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:23,431 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:23,431 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:23,431 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:23,432 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:23,432 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1245b50e)
+13 Apr 2025 21:46:24,839 INFO  ro.mpp2024.repository.TripRepository 98 findAll - Find all Trips
+13 Apr 2025 21:46:24,839 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:24,839 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:24,839 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:24,839 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:24,839 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:24,841 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@64d50d37)
+13 Apr 2025 21:46:24,842 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 1
+13 Apr 2025 21:46:24,842 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:24,842 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:24,842 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:24,842 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:24,842 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:24,843 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@277fa34d)
+13 Apr 2025 21:46:24,844 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 2
+13 Apr 2025 21:46:24,844 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:24,844 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:24,844 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:24,844 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:24,844 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:24,845 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@63e5a43f)
+13 Apr 2025 21:46:24,845 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 3
+13 Apr 2025 21:46:24,845 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:24,845 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:24,846 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:24,846 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:24,846 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:24,846 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7b5b7f07)
+13 Apr 2025 21:46:24,846 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:24,846 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:24,847 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:24,847 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:24,847 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:24,847 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:24,847 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@372b69ee)
+13 Apr 2025 21:46:24,847 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 5
+13 Apr 2025 21:46:24,847 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:24,848 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:24,848 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:24,848 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:24,848 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:24,848 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6d94c18d)
+13 Apr 2025 21:46:26,267 INFO  ro.mpp2024.repository.ReservedSeatRepository 179 findByTripDestinationDateTime - Find ReservedSeat by trip destination, date and time: Miami: 2025-04-04, 14:00
+13 Apr 2025 21:46:26,268 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,268 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,268 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,268 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,268 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,270 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2446f52d)
+13 Apr 2025 21:46:26,271 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,271 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,271 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,271 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,271 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,271 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,271 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@752b795d)
+13 Apr 2025 21:46:26,272 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,272 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,272 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,272 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,272 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,272 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,273 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1b7b15cb)
+13 Apr 2025 21:46:26,273 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,273 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,273 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,273 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,273 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,273 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,274 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5a605d5e)
+13 Apr 2025 21:46:26,274 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,274 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,274 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,274 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,274 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,274 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,275 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@491c34a2)
+13 Apr 2025 21:46:26,275 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 1
+13 Apr 2025 21:46:26,275 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,275 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,275 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,275 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,275 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,276 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@67534d4d)
+13 Apr 2025 21:46:26,276 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,276 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,276 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,276 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,276 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,276 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,277 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@24c5c921)
+13 Apr 2025 21:46:26,277 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,277 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,277 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,277 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,277 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,277 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,278 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7c97fa4a)
+13 Apr 2025 21:46:26,278 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 2
+13 Apr 2025 21:46:26,278 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,278 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,278 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,278 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,278 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,279 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5486685e)
+13 Apr 2025 21:46:26,279 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 2
+13 Apr 2025 21:46:26,279 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,279 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,279 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,279 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,279 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,280 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@29c26ea6)
+13 Apr 2025 21:46:26,280 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,280 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,280 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,280 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,280 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,280 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,280 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@23c4367e)
+13 Apr 2025 21:46:26,281 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,281 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,281 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,281 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,281 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,281 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,281 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6042dde6)
+13 Apr 2025 21:46:26,281 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 3
+13 Apr 2025 21:46:26,282 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,282 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,282 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7619d28)
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 3
+13 Apr 2025 21:46:26,282 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,282 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,282 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,283 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3d6c743c)
+13 Apr 2025 21:46:26,283 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,283 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,283 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,283 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,283 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,283 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,283 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3f19d229)
+13 Apr 2025 21:46:26,284 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,284 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,284 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,284 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,284 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,284 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,284 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@494285c1)
+13 Apr 2025 21:46:26,285 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,285 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,285 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,285 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,285 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,285 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,285 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@42c1d91c)
+13 Apr 2025 21:46:26,285 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,285 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,285 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,285 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,286 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,286 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,286 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1cd288ec)
+13 Apr 2025 21:46:26,286 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:26,286 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,286 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,286 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,286 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,286 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,287 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6d2b89c5)
+13 Apr 2025 21:46:26,287 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,287 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,287 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,287 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,287 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,287 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,287 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@301a752c)
+13 Apr 2025 21:46:26,288 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,288 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,288 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,288 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,288 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,288 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,288 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7c5f530a)
+13 Apr 2025 21:46:26,288 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,289 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,289 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,289 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@74c23185)
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,289 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,289 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,289 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,290 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4516eb79)
+13 Apr 2025 21:46:26,290 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:26,290 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,290 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,290 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,290 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,290 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,290 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@26c645e2)
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,291 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,291 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,291 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@20078533)
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,291 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,291 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,291 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,292 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@45acd6af)
+13 Apr 2025 21:46:26,292 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,292 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,292 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,292 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,292 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,292 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,292 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3713a040)
+13 Apr 2025 21:46:26,292 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,292 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,292 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,292 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,293 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,293 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,293 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@23ee1a15)
+13 Apr 2025 21:46:26,293 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 3
+13 Apr 2025 21:46:26,293 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,293 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,293 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,293 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,293 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,293 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3fdc2d46)
+13 Apr 2025 21:46:26,294 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,294 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,294 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,294 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,294 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,294 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,294 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1c669dbc)
+13 Apr 2025 21:46:26,294 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,295 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,295 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,295 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@36dd3fd0)
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,295 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,295 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,295 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,296 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@65b0b5ac)
+13 Apr 2025 21:46:26,296 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,296 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,296 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,296 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,296 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,296 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,296 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3bd81241)
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 3
+13 Apr 2025 21:46:26,297 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,297 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,297 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@13fbf3fb)
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,297 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,297 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,297 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,298 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@4c076deb)
+13 Apr 2025 21:46:26,298 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,298 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,298 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,298 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,298 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,298 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,298 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2cfabc12)
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,299 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,299 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,299 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@57cbe9d6)
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,299 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,299 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,299 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,300 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1b63acff)
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 2
+13 Apr 2025 21:46:26,300 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,300 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,300 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6cfce24d)
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,300 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,300 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,300 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,301 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,301 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@151fd9ec)
+13 Apr 2025 21:46:26,301 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,301 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,301 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,301 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,301 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,301 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,301 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1d9217c0)
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,302 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,302 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,302 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1b1054d9)
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,302 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,302 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,302 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,302 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@1075337c)
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 2
+13 Apr 2025 21:46:26,303 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,303 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,303 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@7bce4827)
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,303 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,303 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,303 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@76ef6c89)
+13 Apr 2025 21:46:26,303 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,304 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,304 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,304 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6fc05811)
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,304 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,304 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,304 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@56176846)
+13 Apr 2025 21:46:26,304 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5f119dd3)
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5217299c)
+13 Apr 2025 21:46:26,305 INFO  ro.mpp2024.repository.TripRepository 79 findById - Find Trip by ID: 4
+13 Apr 2025 21:46:26,305 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,306 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,306 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@3f7af31f)
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,306 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,306 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,306 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,306 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@52c2f9ee)
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.repository.EmployeeRepository 21 findById - Find Employee by ID: 1
+13 Apr 2025 21:46:26,307 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,307 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,307 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@16e1960)
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 21:46:26,307 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,307 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,307 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,307 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@6ade9b18)
+13 Apr 2025 21:46:26,308 INFO  ro.mpp2024.repository.ClientRepository 20 findById - Find Client by ID: 6
+13 Apr 2025 21:46:26,308 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,308 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,308 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,308 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,308 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,308 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2d47f57)
+13 Apr 2025 21:46:26,308 INFO  ro.mpp2024.repository.TripRepository 246 findByDestinationAndDateAndTime - Find Trip by destination Miami and date: 2025-04-04, time: 14:00
+13 Apr 2025 21:46:26,308 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,308 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,309 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@471ceb6a)
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,309 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,309 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,309 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,309 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@36485ff0)
+13 Apr 2025 21:46:26,310 INFO  ro.mpp2024.repository.TripRepository 98 findAll - Find all Trips
+13 Apr 2025 21:46:26,310 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,310 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,310 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,310 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,310 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,310 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@28d0147a)
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 1
+13 Apr 2025 21:46:26,311 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,311 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,311 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@9dff8f0)
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 2
+13 Apr 2025 21:46:26,311 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,311 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,311 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,311 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2938051a)
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 3
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5d7b7812)
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@75a0c403)
+13 Apr 2025 21:46:26,312 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 5
+13 Apr 2025 21:46:26,312 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 21:46:26,313 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 21:46:26,313 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 21:46:26,313 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 21:46:26,313 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 21:46:26,313 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@34eba3f)
+13 Apr 2025 22:03:45,586 INFO  ro.mpp2024.repository.ClientRepository 15 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:firmaTransport.db} 
+13 Apr 2025 22:03:45,588 INFO  ro.mpp2024.repository.OfficeRepository 40 findAll - Find all Offices
+13 Apr 2025 22:03:45,589 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:03:45,589 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:03:45,589 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:03:45,589 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:03:45,589 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:03:45,837 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@263eb5b8)
 13 Apr 2025 20:08:48,736 INFO  ro.mpp2024.repository.ClientRepository 15 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:firmaTransport.db} 
 13 Apr 2025 20:08:48,739 INFO  ro.mpp2024.repository.OfficeRepository 40 findAll - Find all Offices
 13 Apr 2025 20:08:48,739 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
@@ -13383,3 +14364,88 @@ org.sqlite.SQLiteException: [SQLITE_CONSTRAINT_UNIQUE] A UNIQUE constraint faile
 13 Apr 2025 20:13:16,470 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
 13 Apr 2025 20:13:16,470 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
 13 Apr 2025 20:13:16,470 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@61ecd96a)
+13 Apr 2025 22:15:43,841 INFO  ro.mpp2024.repository.ClientRepository 15 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:firmaTransport.db} 
+13 Apr 2025 22:15:43,844 INFO  ro.mpp2024.repository.OfficeRepository 40 findAll - Find all Offices
+13 Apr 2025 22:15:43,844 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:43,844 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:43,844 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:43,845 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:43,845 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:44,173 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@419041fb)
+13 Apr 2025 22:15:48,292 INFO  ro.mpp2024.repository.EmployeeRepository 133 findByUsername - Find Employee by username
+13 Apr 2025 22:15:48,292 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,292 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,292 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,293 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,293 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,294 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@108f4aa4)
+13 Apr 2025 22:15:48,300 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 22:15:48,300 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,300 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,300 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,300 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,300 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,301 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@2cdea8a0)
+13 Apr 2025 22:15:48,302 INFO  ro.mpp2024.repository.EmployeeRepository 133 findByUsername - Find Employee by username
+13 Apr 2025 22:15:48,302 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,303 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,303 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,303 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,303 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,303 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@388ea6ae)
+13 Apr 2025 22:15:48,304 INFO  ro.mpp2024.repository.OfficeRepository 16 findById - Find Office by ID: 1
+13 Apr 2025 22:15:48,304 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,304 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,304 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,304 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,304 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,304 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@68dd6103)
+13 Apr 2025 22:15:48,409 INFO  ro.mpp2024.repository.TripRepository 98 findAll - Find all Trips
+13 Apr 2025 22:15:48,410 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,410 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,410 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,410 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,410 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,410 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@9f5d383)
+13 Apr 2025 22:15:48,412 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 1
+13 Apr 2025 22:15:48,412 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,412 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,413 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,413 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,413 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,413 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5358e3a4)
+13 Apr 2025 22:15:48,414 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 2
+13 Apr 2025 22:15:48,414 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,414 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,414 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,414 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,414 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,414 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@287dd25f)
+13 Apr 2025 22:15:48,415 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 3
+13 Apr 2025 22:15:48,415 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,415 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,415 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,415 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,415 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,415 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@5caba6cd)
+13 Apr 2025 22:15:48,415 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 4
+13 Apr 2025 22:15:48,415 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,416 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,416 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@54da3f0d)
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.repository.DestinationRepository 17 findById - Find Destination by ID: 5
+13 Apr 2025 22:15:48,416 TRACE ro.mpp2024.utils.JdbcUtils 48 getConnection - Enter
+13 Apr 2025 22:15:48,416 TRACE ro.mpp2024.utils.JdbcUtils 25 getNewConnection - Enter
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.utils.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:firmaTransport.db
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.utils.JdbcUtils 31 getNewConnection - user: null
+13 Apr 2025 22:15:48,416 INFO  ro.mpp2024.utils.JdbcUtils 32 getNewConnection - pass: null
+13 Apr 2025 22:15:48,417 TRACE ro.mpp2024.utils.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@44dd56af)
+29 Apr 2025 16:53:06,762 INFO  ro.mpp2024.StartJsonServer 25 main - Server properties set. {server.port=55556, jdbc.url=jdbc:sqlite:firmaTransport.db}
+29 Apr 2025 16:53:06,769 INFO  ro.mpp2024.ClientRepository 17 <init> - Initializing ClientRepository with properties: {server.port=55556, jdbc.url=jdbc:sqlite:firmaTransport.db} 
+29 Apr 2025 16:53:06,770 TRACE ro.mpp2024.services.TaskManagementSystemServicesImpl 33 <init> - Entering TaskManagementSystemServicesImpl constructor
+29 Apr 2025 16:53:06,770 DEBUG ro.mpp2024.StartJsonServer 52 main - Starting server on port: 55556
+29 Apr 2025 16:53:06,771 DEBUG ro.mpp2024.utils.AbsConcurrentServer 14 <init> - Concurrent AbstractServer
+29 Apr 2025 16:53:06,771 INFO  ro.mpp2024.utils.TaskManagementSystemJsonConcurrentServer 18 <init> - TaskManagementSystemJsonConcurrentServer
+29 Apr 2025 16:53:06,779 INFO  ro.mpp2024.utils.AbstractServer 24 start - Waiting for clients ...

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ro.mpp2024.controllerOld.LoginController;
 import ro.mpp2024.model.Office;
 import ro.mpp2024.repository.*;
 import ro.mpp2024.service.Service;
@@ -47,7 +48,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 400, 300);
 
         // Set the service in the LoginController
-        ro.mpp2024.controller.LoginController controller = fxmlLoader.getController();
+        LoginController controller = fxmlLoader.getController();
         controller.setService(service);
 
         // Set up the stage
