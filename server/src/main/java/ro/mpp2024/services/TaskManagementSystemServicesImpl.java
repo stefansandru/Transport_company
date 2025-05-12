@@ -15,7 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class TaskManagementSystemServicesImpl extends AbstractServicesImpl {
+// todo: remove abstract
+public abstract class TaskManagementSystemServicesImpl extends AbstractServicesImpl {
     private final IClientRepository clientRepository;
     private final IEmployeeRepository employeeRepository;
     private final IReservedSeatRepository reservedSeatRepository;

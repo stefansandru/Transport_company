@@ -39,7 +39,7 @@ public class StartJsonServer {
         );
 
         // Initialize service
-        TaskManagementSystemServicesImpl serverImpl = new TaskManagementSystemServicesImpl(clientRepository, employeeRepository, reservedSeatRepository, tripRepository);
+//        TaskManagementSystemServicesImpl serverImpl = new TaskManagementSystemServicesImpl(clientRepository, employeeRepository, reservedSeatRepository, tripRepository);
 
         int serverPort = defaultPort;
 
@@ -51,11 +51,11 @@ public class StartJsonServer {
         }
         logger.debug("Starting server on port: {}", serverPort);
 
-        AbstractServer server = new TaskManagementSystemJsonConcurrentServer(serverPort, serverImpl);
-        try {
-            server.start();
-        } catch (ServerException e) {
-            logger.error("Error starting the server {}", e.getMessage());
-        }
+//        AbstractServer server = new TaskManagementSystemJsonConcurrentServer(serverPort, serverImpl);
+//        try {
+//            server.start();
+//        } catch (ServerException e) {
+//            logger.error("Error starting the server {}", e.getMessage());
+//        }
     }
 }

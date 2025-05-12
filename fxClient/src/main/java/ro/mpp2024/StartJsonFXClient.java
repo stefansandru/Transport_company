@@ -10,18 +10,23 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ro.mpp2024.controller.LoginController;
 import ro.mpp2024.controller.MainAppController;
-import ro.mpp2024.jsonProtocol.TaskManagementServicesJsonProxy;
+import ro.mpp2024.proto.LoginReply;
+import ro.mpp2024.proto.TransportCompanyGrpc;
+import ro.mpp2024.proto.LoginRequest;
+
+import io.grpc.ManagedChannel;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+import io.grpc.ManagedChannelBuilder;
 
 
 public class StartJsonFXClient extends Application {
     private Stage primaryStage;
 
-    private static int defaultServerPort = 55555;
+    private static int defaultServerPort = 5000;
     private static String defaultServer = "localhost";
 
     private static final Logger logger = LogManager.getLogger(StartJsonFXClient.class);
@@ -51,7 +56,14 @@ public class StartJsonFXClient extends Application {
         logger.info("Using server IP {}", serverIP);
         logger.info("Using server port {}", serverPort);
 
-        IServices server = new TaskManagementServicesJsonProxy(serverIP, serverPort);
+        ManagedChannel channel = ManagedChannelBuilder
+                .forAddress(serverIP, serverPort)
+                .usePlaintext() // pentru localhost, fără TLS
+                .build();
+        TransportCompanyGrpc.TransportCompanyBlockingStub grpcStub =
+                TransportCompanyGrpc.newBlockingStub(channel);
+
+        IServices server = new GrpcServicesProxy(grpcStub);
 
         logger.info("Login view start loading");
 
@@ -77,7 +89,29 @@ public class StartJsonFXClient extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ServicesException {
         launch(args);
+//        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 5000)
+//                .usePlaintext()
+//                .build();
+//
+//        TransportCompanyGrpc.TransportCompanyBlockingStub stub =
+//                TransportCompanyGrpc.newBlockingStub(channel);
+//
+//        LoginRequest request = LoginRequest.newBuilder()
+//                .setUsername("ana")
+//                .setPassword("ana")
+//                .build();
+//
+//        LoginReply reply = stub.login(request);
+//
+//        if (reply.getEmployeeId() > 0) {
+//            System.out.println("Login reușit! Id: " + reply.getEmployeeId());
+//        } else {
+//            System.out.println("Login eșuat!");
+//        }
+//
+//        channel.shutdown();
+
     }
 }

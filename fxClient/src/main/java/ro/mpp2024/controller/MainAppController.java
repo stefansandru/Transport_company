@@ -75,18 +75,20 @@ public class MainAppController implements Initializable, IObserver {
     public void initialize(URL location, ResourceBundle resources) {
         initTripsTable();
         initSeatsTable();
+
+        // Adaugă listener pentru selecția din tabelul de tripuri
+        tripsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldTrip, selectedTrip) -> {
+            if (selectedTrip != null) {
+                searchDestinationField.setText(selectedTrip.getDestination().getName());
+                searchDateField.setValue(selectedTrip.getDepartureDate());
+                searchTimeField.setText(selectedTrip.getDepartureTime().toString());
+            }
+        });
     }
 
-    public void employeeLoggedIn(Employee employee) throws ServicesException {
-        AlertFactory.getInstance().createAlert("Welcome", "Welcome " + employee.getUsername()).showAndWait();
-    }
-
-    public void seatsReserved() throws ServicesException {
+    public void seatsReserved() {
         Platform.runLater(()-> {
             loadTrips();
-//            if (tripToReserve != null) {
-//                loadSeats();
-//            }
             loadSeats();
         });
     }
@@ -103,9 +105,6 @@ public class MainAppController implements Initializable, IObserver {
         try {
             List<Trip> trips = server.getAllTrips();
             tripsTable.setItems(FXCollections.observableArrayList(trips));
-//        } catch (ServicesException e) {
-//            logger.error("Error loading trips: {}", e.getMessage());
-//        }
         }
         catch (Exception e) {
             logger.error("Error loading trips: {}", e.getMessage());
@@ -131,20 +130,6 @@ public class MainAppController implements Initializable, IObserver {
     @FXML
     private void onSearchButtonClick(ActionEvent event) {
         try {
-//            logger.debug("Searching for seats...");
-//            String destination = searchDestinationField.getText();
-//            if (destination.isEmpty()) {
-//                AlertFactory.getInstance().createAlert("Error", "Destination cannot be empty!").showAndWait();
-//                return;
-//            }
-//            LocalDate date = searchDateField.getValue();
-//            if (date == null) {
-//                AlertFactory.getInstance().createAlert("Error", "Date cannot be empty!").showAndWait();
-//                return;
-//            }
-//            LocalTime time = LocalTime.parse(searchTimeField.getText());
-//
-//            tripToReserve = server.getTrip(destination, date, time);
             loadSeats();
         } catch (Exception e) {
             AlertFactory.getInstance().createAlert("Error", "Invalid input format: " + e.getMessage()).showAndWait();
@@ -172,6 +157,7 @@ public class MainAppController implements Initializable, IObserver {
                 return;
             }
             tripToReserve = newTrip;
+            logger.debug("Trip found: {}", tripToReserve);
             List<SeatDTO> seats = server.searchTripSeats(
                     tripToReserve.getDestination().getName(),
                     tripToReserve.getDepartureDate(),
@@ -194,7 +180,6 @@ public class MainAppController implements Initializable, IObserver {
                     .toList();
 
             server.reserveSeats(clientName, seatNumbers, tripToReserve, currentEmployee);
-            logger.debug("no error iudhiouhai");
             AlertFactory.getInstance().createAlert("Success", "Seats reserved successfully!").showAndWait();
             loadTrips();
             loadSeats();

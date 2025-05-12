@@ -25,7 +25,8 @@ import java.util.Optional;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class TaskManagementServicesJsonProxy extends AbstractServicesImpl {
+// todo: remove abstract
+public abstract class TaskManagementServicesJsonProxy extends AbstractServicesImpl {
     private String host;
     private int port;
     private Socket connection;

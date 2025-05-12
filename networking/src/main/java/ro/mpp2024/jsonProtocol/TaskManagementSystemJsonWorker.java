@@ -120,7 +120,6 @@ public class TaskManagementSystemJsonWorker implements Runnable, IObserver {
         }
     }
 
-    @Override
     public void employeeLoggedIn(Employee employee) throws ServicesException {
         logger.trace("Entering employeeLoggedIn");
         Response resp = JsonProtocolUtils.createEmployeeLoggedInResponse(employee);

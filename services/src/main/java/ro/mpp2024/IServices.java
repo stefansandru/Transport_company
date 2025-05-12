@@ -11,4 +11,6 @@ public interface IServices {
     public List<SeatDTO> searchTripSeats(String destination, LocalDate date, LocalTime time) throws ServicesException;
     public void reserveSeats(String clientName, List<Integer> seatNumbers, Trip trip, Employee employee) throws ServicesException;
     public Trip getTrip(String destination, LocalDate date, LocalTime time) throws ServicesException;
+    void subscribeToUpdates(int employeeId, IObserver observer);
+
 }
