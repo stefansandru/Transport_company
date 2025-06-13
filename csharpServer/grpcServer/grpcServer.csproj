@@ -25,7 +25,6 @@
     <ItemGroup>
       <ProjectReference Include="..\model\model.csproj" />
       <ProjectReference Include="..\persistance\persistance.csproj" />
-      <ProjectReference Include="..\services\services.csproj" />
     </ItemGroup>
 
 </Project>

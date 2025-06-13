@@ -1401,32 +1401,6 @@
         "runtime": {
           "bin/placeholder/persistance.dll": {}
         }
-      },
-      "services/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "Avalonia": "11.3.0",
-          "Avalonia.Desktop": "11.3.0",
-          "BCrypt.Net-Next": "4.0.3",
-          "Google.Protobuf": "3.31.0-rc2",
-          "Grpc.AspNetCore": "2.71.0",
-          "Microsoft.Data.Sqlite": "10.0.0-preview.3.25171.6",
-          "Microsoft.Extensions.Configuration": "10.0.0-preview.3.25171.5",
-          "Microsoft.Extensions.Configuration.Json": "10.0.0-preview.3.25171.5",
-          "Microsoft.Extensions.Logging": "10.0.0-preview.3.25171.5",
-          "Microsoft.Extensions.Logging.Console": "10.0.0-preview.3.25171.5",
-          "NLog": "6.0.0-preview1",
-          "log4net": "3.1.0-preview.3",
-          "model": "1.0.0",
-          "persistance": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/services.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/services.dll": {}
-        }
       }
     }
   },
@@ -3587,11 +3561,6 @@
       "type": "project",
       "path": "../persistance/persistance.csproj",
       "msbuildProject": "../persistance/persistance.csproj"
-    },
-    "services/1.0.0": {
-      "type": "project",
-      "path": "../services/services.csproj",
-      "msbuildProject": "../services/services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3601,8 +3570,7 @@
       "Grpc.AspNetCore >= 2.71.0",
       "Grpc.Tools >= 2.72.0",
       "model >= 1.0.0",
-      "persistance >= 1.0.0",
-      "services >= 1.0.0"
+      "persistance >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3636,9 +3604,6 @@
             },
             "/Users/stefansandru/Documents/trnsport-company/csharpServer/persistance/persistance.csproj": {
               "projectPath": "/Users/stefansandru/Documents/trnsport-company/csharpServer/persistance/persistance.csproj"
-            },
-            "/Users/stefansandru/Documents/trnsport-company/csharpServer/services/services.csproj": {
-              "projectPath": "/Users/stefansandru/Documents/trnsport-company/csharpServer/services/services.csproj"
             }
           }
         }

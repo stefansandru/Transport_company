@@ -3,8 +3,8 @@ include 'model'
 include 'repository'
 include 'persistance'
 include 'services'
-include 'networking'
-include 'server'
+//include 'networking'
+//include 'server'
 
 
 include 'fxClient'

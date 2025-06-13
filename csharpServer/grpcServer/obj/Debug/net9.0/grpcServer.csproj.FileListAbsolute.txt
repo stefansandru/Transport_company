@@ -371,10 +371,8 @@
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/runtimes/win/lib/net9.0/System.Text.Encodings.Web.dll
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/model.dll
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/persistance.dll
-/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/services.dll
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/model.pdb
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/persistance.pdb
-/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/services.pdb
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/obj/Debug/net9.0/grpcServer.csproj.AssemblyReference.cache
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/obj/Debug/net9.0/grpcServer.GeneratedMSBuildEditorConfig.editorconfig
