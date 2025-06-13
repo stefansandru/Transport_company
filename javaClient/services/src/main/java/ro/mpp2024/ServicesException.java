@@ -1,6 +1,7 @@
 package ro.mpp2024;
 
 public class ServicesException extends Exception {
+
     public ServicesException() {
     }
 

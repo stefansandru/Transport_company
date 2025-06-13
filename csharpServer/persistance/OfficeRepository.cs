@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Avalonia.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using model;
@@ -14,7 +13,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
         // Constructor specific for OfficeRepository, if needed
     }
 
-    public override Optional<Office> FindById(int id)
+    public override Office? FindById(int id)
     {
         logger.LogInformation("Find Office by ID: {Id}", id);
 
@@ -32,7 +31,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
                     if (reader.Read())
                     {
                         var name = reader.GetString(reader.GetOrdinal("name"));
-                        return new Optional<Office>(new Office(id, name));
+                        return new Office(id, name);
                     }
                 }
             }
@@ -42,7 +41,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
             logger.LogError(e, "Database error while finding Office with ID {Id}", id);
         }
 
-        return new Optional<Office>();
+        return null;
     }
 
     public override IEnumerable<Office> FindAll()
@@ -78,7 +77,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
         return offices;
     }
 
-    public override Optional<Office> Save(Office office)
+    public override Office? Save(Office office)
     {
         logger.LogInformation("Save Office: {Office}", office);
 
@@ -103,7 +102,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
                 {
                     var id = Convert.ToInt32(idCommand.ExecuteScalar());
                     office.Id = id;
-                    return new Optional<Office>(office);
+                    return office;
                 }
             }
         }
@@ -112,17 +111,17 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
             logger.LogError(e, "Database error while saving Office: {Office}", office);
         }
 
-        return new Optional<Office>();
+        return null;
     }
 
-    public override Optional<Office> Delete(int id)
+    public override Office? Delete(int id)
     {
         logger.LogInformation("Delete Office with ID: {Id}", id);
 
         var officeToDelete = FindById(id);
-        if (!officeToDelete.HasValue)
+        if (officeToDelete == null)
         {
-            return new Optional<Office>();
+            return null;
         }
 
         const string query = "DELETE FROM Office WHERE id = @id";
@@ -147,10 +146,10 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
             logger.LogError(e, "Database error while deleting Office with ID {Id}", id);
         }
 
-        return new Optional<Office>();
+        return null;
     }
 
-    public override Optional<Office> Update(Office office)
+    public override Office? Update(Office office)
     {
         logger.LogInformation("Update Office: {Office}", office);
 
@@ -171,7 +170,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
 
                 if (affectedRows > 0)
                 {
-                    return new Optional<Office>(office);
+                    return office;
                 }
             }
         }
@@ -180,10 +179,10 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
             logger.LogError(e, "Database error while updating Office: {Office}", office);
         }
 
-        return new Optional<Office>();
+        return null;
     }
 
-    public Optional<Office> FindByName(string name)
+    public Office? FindByName(string name)
     {
         logger.LogInformation("Find Office by name: {Name}", name);
 
@@ -204,7 +203,7 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
                     if (reader.Read())
                     {
                         var id = reader.GetInt32(reader.GetOrdinal("id"));
-                        return new Optional<Office>(new Office(id, name));
+                        return new Office(id, name);
                     }
                 }
             }
@@ -214,6 +213,6 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
             logger.LogError(e, "Database error while finding Office with name {Name}", name);
         }
 
-        return new Optional<Office>();
+        return null;
     }
 }

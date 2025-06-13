@@ -1,5 +1,4 @@
 using Microsoft.Data.Sqlite;
-using Avalonia.Data;
 using Microsoft.Extensions.Logging;
 using model;
 
@@ -14,7 +13,7 @@ namespace persistance
             this.destinationRepository = destinationRepository;
         }
 
-        private Optional<Trip> ExtractTripFromResultSet(SqliteDataReader reader)
+        private Trip? ExtractTripFromResultSet(SqliteDataReader reader)
         {
             try
             {
@@ -24,20 +23,20 @@ namespace persistance
                 var departureTime = TimeOnly.FromTimeSpan(reader.GetDateTime(reader.GetOrdinal("departure_time")).TimeOfDay);
                 var availableSeats = reader.GetInt32(reader.GetOrdinal("available_seats"));
 
-                var destination = destinationRepository.FindById(destinationId).Value;
-                return new Optional<Trip>(new Trip(id, destination, departureDate, departureTime, availableSeats));
+                var destination = destinationRepository.FindById(destinationId);
+                if (destination == null) return null;
+                return new Trip(id, destination, departureDate, departureTime, availableSeats);
             }
             catch (SqliteException e)
             {
                 logger.LogError(e, "Error while extracting Trip from ResultSet");
-                return new Optional<Trip>();
+                return null;
             }
         }
 
-        public override Optional<Trip> FindById(int id)
+        public override Trip? FindById(int id)
         {
             logger.LogInformation("Find Trip by ID: {Id}", id);
-
             const string query = "SELECT * FROM Trip WHERE id = @id";
             try
             {
@@ -46,13 +45,11 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@id", id);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            var trip = ExtractTripFromResultSet(reader); 
-                            return trip;
+                            return ExtractTripFromResultSet(reader);
                         }
                     }
                 }
@@ -61,32 +58,28 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while finding Trip with ID {Id}", id);
             }
-
-            return new Optional<Trip>();
+            return null;
         }
 
         public override IEnumerable<Trip> FindAll()
         {
             logger.LogInformation("Find all Trips");
-
             var trips = new List<Trip>();
             const string query = "SELECT * FROM Trip";
-
             try
             {
                 using (var connection = jdbc.GetConnection())
                 using (var command = new SqliteCommand(query, (SqliteConnection)connection))
                 {
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var trip = ExtractTripFromResultSet(reader);
-                            if (trip.HasValue)
+                            if (trip != null)
                             {
-                                trips.Add(trip.Value);
+                                trips.Add(trip);
                             }
                         }
                     }
@@ -96,7 +89,6 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while finding all Trips");
             }
-            
             return trips;
         }
 
@@ -120,9 +112,9 @@ namespace persistance
                         while (reader.Read())
                         {
                             var trip = ExtractTripFromResultSet(reader);
-                            if (trip.HasValue)
+                            if (trip != null)
                             {
-                                trips.Add(trip.Value);
+                                trips.Add(trip);
                             }
                         }
                     }
@@ -156,9 +148,9 @@ namespace persistance
                         while (reader.Read())
                         {
                             var trip = ExtractTripFromResultSet(reader);
-                            if (trip.HasValue)
+                            if (trip != null)
                             {
-                                trips.Add(trip.Value);
+                                trips.Add(trip);
                             }
                         }
                     }
@@ -172,7 +164,7 @@ namespace persistance
             return trips;
         }
 
-        public override Optional<Trip> Save(Trip trip)
+        public override Trip? Save(Trip trip)
         {
             logger.LogInformation("Save Trip: {Trip}", trip);
 
@@ -196,7 +188,7 @@ namespace persistance
                     {
                         var id = Convert.ToInt32(idCommand.ExecuteScalar());
                         trip.Id = id;
-                        return new Optional<Trip>(trip);
+                        return trip;
                     }
                 }
             }
@@ -205,17 +197,17 @@ namespace persistance
                 logger.LogError(e, "Database error while saving Trip: {Trip}", trip);
             }
 
-            return new Optional<Trip>();
+            return null;
         }
 
-        public override Optional<Trip> Delete(int id)
+        public override Trip? Delete(int id)
         {
             logger.LogInformation("Delete Trip with ID: {Id}", id);
 
             var tripToDelete = FindById(id);
-            if (!tripToDelete.HasValue)
+            if (tripToDelete == null)
             {
-                return new Optional<Trip>();
+                return null;
             }
 
             const string query = "DELETE FROM Trip WHERE id = @id";
@@ -239,10 +231,10 @@ namespace persistance
                 logger.LogError(e, "Database error while deleting Trip with ID {Id}", id);
             }
 
-            return new Optional<Trip>();
+            return null;
         }
 
-        public override Optional<Trip> Update(Trip trip)
+        public override Trip? Update(Trip trip)
         {
             logger.LogInformation("Update Trip: {Trip}", trip);
 
@@ -262,7 +254,7 @@ namespace persistance
 
                     if (affectedRows > 0)
                     {
-                        return new Optional<Trip>(trip);
+                        return trip;
                     }
                 }
             }
@@ -271,7 +263,7 @@ namespace persistance
                 logger.LogError(e, "Database error while updating Trip: {Trip}", trip);
             }
 
-            return new Optional<Trip>();
+            return null;
         }
 
         public IEnumerable<Trip> FindAllByName(string name)
@@ -294,9 +286,9 @@ namespace persistance
                         while (reader.Read())
                         {
                             var trip = ExtractTripFromResultSet(reader);
-                            if (trip.HasValue)
+                            if (trip != null)
                             {
-                                trips.Add(trip.Value);
+                                trips.Add(trip);
                             }
                         }
                     }
@@ -334,9 +326,9 @@ namespace persistance
                         if (reader.Read())
                         {
                             var trip = ExtractTripFromResultSet(reader);
-                            if (trip.HasValue)
+                            if (trip != null)
                             {
-                                return trip.Value;
+                                return trip;
                             }
                         }
                     }

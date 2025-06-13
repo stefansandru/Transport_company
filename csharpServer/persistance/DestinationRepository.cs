@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
-using Avalonia.Data;
 using Microsoft.Extensions.Logging;
 using model;
 
@@ -14,7 +13,7 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
         // Constructor specific for DestinationRepository, if needed
     }
 
-    public override Optional<Destination> FindById(int id)
+    public override Destination? FindById(int id)
     {
         logger.LogInformation("Find Destination by ID: {Id}", id);
 
@@ -32,7 +31,7 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
                     if (reader.Read())
                     {
                         var name = reader.GetString(reader.GetOrdinal("name"));
-                        return new Optional<Destination>(new Destination(id, name));
+                        return new Destination(id, name);
                     }
                 }
             }
@@ -42,7 +41,7 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
             logger.LogError(e, "Database error while finding Destination with ID {Id}", id);
         }
 
-        return new Optional<Destination>();
+        return null;
     }
 
     public IEnumerable<Destination> FindByName(string name)
@@ -115,7 +114,7 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
         return destinations;
     }
 
-    public override Optional<Destination> Save(Destination destination)
+    public override Destination? Save(Destination destination)
     {
         logger.LogInformation("Save Destination: {Destination}", destination);
 
@@ -140,7 +139,7 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
                 {
                     var id = Convert.ToInt32(idCommand.ExecuteScalar());
                     destination.Id = id;
-                    return new Optional<Destination>(destination);
+                    return destination;
                 }
             }
         }
@@ -149,17 +148,17 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
             logger.LogError(e, "Database error while saving Destination: {Destination}", destination);
         }
 
-        return new Optional<Destination>();
+        return null;
     }
 
-    public override Optional<Destination> Delete(int id)
+    public override Destination? Delete(int id)
     {
         logger.LogInformation("Delete Destination with ID: {Id}", id);
 
         var destinationToDelete = FindById(id);
-        if (!destinationToDelete.HasValue)
+        if (destinationToDelete == null)
         {
-            return new Optional<Destination>();
+            return null;
         }
 
         const string query = "DELETE FROM Destination WHERE id = @id";
@@ -183,10 +182,10 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
             logger.LogError(e, "Database error while deleting Destination with ID {Id}", id);
         }
 
-        return new Optional<Destination>();
+        return null;
     }
 
-    public override Optional<Destination> Update(Destination destination)
+    public override Destination? Update(Destination destination)
     {
         logger.LogInformation("Update Destination: {Destination}", destination);
 
@@ -206,7 +205,7 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
 
                 if (affectedRows > 0)
                 {
-                    return new Optional<Destination>(destination);
+                    return destination;
                 }
             }
         }
@@ -215,6 +214,6 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
             logger.LogError(e, "Database error while updating Destination: {Destination}", destination);
         }
 
-        return new Optional<Destination>();
+        return null;
     }
 }

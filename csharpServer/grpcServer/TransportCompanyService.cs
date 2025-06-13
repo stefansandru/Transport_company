@@ -156,36 +156,36 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
         if (client == null)
         {
             client = new Client { Name = request.ClientName };
-            client = _clientRepository.Save(client).Value;
+            client = _clientRepository.Save(client);
         }
 
         var trip = _tripRepository.FindById(request.Trip.Id);
-        if (!trip.HasValue)
+        if (trip == null)
             throw new RpcException(new Status(StatusCode.NotFound, "Trip not found"));
 
         var employee = _employeeRepository.FindById(request.EmployeeId);
-        if (!employee.HasValue)
+        if (employee == null)
             throw new RpcException(new Status(StatusCode.NotFound, "Employee not found"));
 
         foreach (var seatNumber in request.SeatNumbers)
         {
             var reservedSeat = new ReservedSeat
             {
-                Trip = trip.Value,
-                Employee = employee.Value,
+                Trip = trip,
+                Employee = employee,
                 SeatNumber = seatNumber,
                 Client = client
             };
             _reservedSeatRepository.Save(reservedSeat);
         }
 
-        trip.Value.AvailableSeats = (trip.Value.AvailableSeats ?? 0) - request.SeatNumbers.Count;
-        _tripRepository.Update(trip.Value);
+        trip.AvailableSeats = (trip.AvailableSeats ?? 0) - request.SeatNumbers.Count;
+        _tripRepository.Update(trip);
 
         // NOTIFICĂ TOȚI CLIENTII LOGAȚI (mai puțin pe cel care rezervă acum)
         foreach (var entry in EmployeeStreams)
         {
-            if (entry.Key != employee.Value.Id)
+            if (entry.Key != employee.Id)
             {
                 try
                 {
@@ -202,7 +202,7 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
         var reply = new ReserveSeatsReply
         {
             Success = true,
-            Message = $"Reserved {request.SeatNumbers.Count} seat(s) for {client.Name} on trip {trip.Value.Id}"
+            Message = $"Reserved {request.SeatNumbers.Count} seat(s) for {client.Name} on trip {trip.Id}"
         };
 
         return reply;

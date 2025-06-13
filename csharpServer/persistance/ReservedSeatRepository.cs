@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
-using Avalonia.Data;
 using Microsoft.Extensions.Logging;
 using model;
 
@@ -20,7 +19,7 @@ namespace persistance
             this.clientRepository = clientRepository;
         }
 
-        private Optional<ReservedSeat> ExtractReservedSeatFromResultSet(SqliteDataReader reader)
+        private ReservedSeat? ExtractReservedSeatFromResultSet(SqliteDataReader reader)
         {
             try
             {
@@ -31,7 +30,7 @@ namespace persistance
                 var clientId = reader.GetInt32(reader.GetOrdinal("client_id"));
 
                 var trip = tripRepository.FindById(tripId)
-                    .Value ?? throw new InvalidOperationException($"Trip with ID {tripId} not found");
+                    ?? throw new InvalidOperationException($"Trip with ID {tripId} not found");
 
                 var reservedSeat = new ReservedSeat
                 {
@@ -42,32 +41,31 @@ namespace persistance
 
                 if (employeeId != 0)
                 {
-                    var empOptional = employeeRepository.FindById(employeeId);
-                    if (empOptional.HasValue)
+                    var emp = employeeRepository.FindById(employeeId);
+                    if (emp != null)
                     {
-                        reservedSeat.Employee = empOptional.Value;
+                        reservedSeat.Employee = emp;
                     }
                 }
-
                 if (clientId != 0)
                 {
-                    var clientOptional = clientRepository.FindById(clientId);
-                    if (clientOptional.HasValue)
+                    var client = clientRepository.FindById(clientId);
+                    if (client != null)
                     {
-                        reservedSeat.Client = clientOptional.Value;
+                        reservedSeat.Client = client;
                     }
                 }
                 Console.WriteLine(reservedSeat);
-                return new Optional<ReservedSeat>(reservedSeat);
+                return reservedSeat;
             }
             catch (SqliteException e)
             {
                 logger.LogError(e, "Error while extracting ReservedSeat from ResultSet");
-                return new Optional<ReservedSeat>();
+                return null;
             }
         }
 
-        public override Optional<ReservedSeat> FindById(int id)
+        public override ReservedSeat? FindById(int id)
         {
             logger.LogInformation("Find ReservedSeat by ID: {Id}", id);
             const string query = "SELECT * FROM ReservedSeats WHERE id = @id";
@@ -78,7 +76,6 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@id", id);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         if (reader.Read())
@@ -92,32 +89,28 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while finding ReservedSeat with ID {Id}", id);
             }
-
-            return new Optional<ReservedSeat>();
+            return null;
         }
 
         public override IEnumerable<ReservedSeat> FindAll()
         {
             logger.LogInformation("Find all ReservedSeats");
-
             var reservedSeats = new List<ReservedSeat>();
             const string query = "SELECT * FROM ReservedSeats";
-
             try
             {
                 using (var connection = jdbc.GetConnection())
                 using (var command = new SqliteCommand(query, (SqliteConnection)connection))
                 {
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var reservedSeat = ExtractReservedSeatFromResultSet(reader);
-                            if (reservedSeat.HasValue)
+                            if (reservedSeat != null)
                             {
-                                reservedSeats.Add(reservedSeat.Value);
+                                reservedSeats.Add(reservedSeat);
                             }
                         }
                     }
@@ -127,17 +120,14 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while finding all ReservedSeats");
             }
-
             return reservedSeats;
         }
 
         public IEnumerable<ReservedSeat> FindByTripId(int tripId)
         {
             logger.LogInformation("Find ReservedSeats by Trip ID: {TripId}", tripId);
-
             var reservedSeats = new List<ReservedSeat>();
             const string query = "SELECT * FROM ReservedSeats WHERE trip_id = @trip_id";
-
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -145,15 +135,14 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@trip_id", tripId);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var reservedSeat = ExtractReservedSeatFromResultSet(reader);
-                            if (reservedSeat.HasValue)
+                            if (reservedSeat != null)
                             {
-                                reservedSeats.Add(reservedSeat.Value);
+                                reservedSeats.Add(reservedSeat);
                             }
                         }
                     }
@@ -163,21 +152,18 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while finding ReservedSeats for trip ID {TripId}", tripId);
             }
-
             return reservedSeats;
         }
 
-        public override Optional<ReservedSeat> Save(ReservedSeat reservedSeat)
+        public override ReservedSeat? Save(ReservedSeat reservedSeat)
         {
             logger.LogInformation("Save ReservedSeat: {ReservedSeat}", reservedSeat);
-
             const string query = "INSERT INTO ReservedSeats (trip_id, employee_id, seat_number, client_id) VALUES (@trip_id, @employee_id, @seat_number, @client_id)";
             try
             {
                 using (var connection = jdbc.GetConnection())
                 {
                     connection.Open();
-
                     using (var command = new SqliteCommand(query, (SqliteConnection)connection))
                     {
                         command.Parameters.AddWithValue("@trip_id", reservedSeat.Trip.Id);
@@ -186,12 +172,11 @@ namespace persistance
                         command.Parameters.AddWithValue("@client_id", reservedSeat.Client.Id);
                         command.ExecuteNonQuery();
                     }
-
                     using (var idCommand = new SqliteCommand("SELECT last_insert_rowid()", (SqliteConnection)connection))
                     {
                         var id = Convert.ToInt32(idCommand.ExecuteScalar());
                         reservedSeat.Id = id;
-                        return new Optional<ReservedSeat>(reservedSeat);
+                        return reservedSeat;
                     }
                 }
             }
@@ -199,19 +184,17 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while saving ReservedSeat: {ReservedSeat}", reservedSeat);
             }
-
-            return new Optional<ReservedSeat>();
+            return null;
         }
 
-        public override Optional<ReservedSeat> Delete(int id)
+        public override ReservedSeat? Delete(int id)
         {
             logger.LogInformation("Delete ReservedSeat with ID: {Id}", id);
             var reservedSeatToDelete = FindById(id);
-            if (!reservedSeatToDelete.HasValue)
+            if (reservedSeatToDelete == null)
             {
-                return new Optional<ReservedSeat>();
+                return null;
             }
-
             const string query = "DELETE FROM ReservedSeats WHERE id = @id";
             try
             {
@@ -221,7 +204,6 @@ namespace persistance
                     command.Parameters.AddWithValue("@id", id);
                     connection.Open();
                     var affectedRows = command.ExecuteNonQuery();
-
                     if (affectedRows > 0)
                     {
                         return reservedSeatToDelete;
@@ -232,11 +214,10 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while deleting ReservedSeat with ID {Id}", id);
             }
-
-            return new Optional<ReservedSeat>();
+            return null;
         }
 
-        public override Optional<ReservedSeat> Update(ReservedSeat reservedSeat)
+        public override ReservedSeat? Update(ReservedSeat reservedSeat)
         {
             logger.LogInformation("Update ReservedSeat: {ReservedSeat}", reservedSeat);
             const string query = "UPDATE ReservedSeats SET trip_id = @trip_id, employee_id = @employee_id, seat_number = @seat_number, client_id = @client_id WHERE id = @id";
@@ -252,10 +233,9 @@ namespace persistance
                     command.Parameters.AddWithValue("@id", reservedSeat.Id);
                     connection.Open();
                     var affectedRows = command.ExecuteNonQuery();
-
                     if (affectedRows > 0)
                     {
-                        return new Optional<ReservedSeat>(reservedSeat);
+                        return reservedSeat;
                     }
                 }
             }
@@ -263,8 +243,7 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while updating ReservedSeat: {ReservedSeat}", reservedSeat);
             }
-
-            return new Optional<ReservedSeat>();
+            return null;
         }
 
         public List<ReservedSeat> FindByTripDestinationDateTime(string destination, string date, string time)
@@ -276,7 +255,6 @@ namespace persistance
         JOIN Trip t ON rs.trip_id = t.id
         JOIN Destination d ON t.destination_id = d.id
         WHERE d.name = @destination AND t.departure_date = @date AND t.departure_time = @time";
-
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -286,15 +264,14 @@ namespace persistance
                     command.Parameters.AddWithValue("@date", date);
                     command.Parameters.AddWithValue("@time", time);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             var reservedSeat = ExtractReservedSeatFromResultSet(reader);
-                            if (reservedSeat.HasValue)
+                            if (reservedSeat != null)
                             {
-                                reservedSeats.Add(reservedSeat.Value);
+                                reservedSeats.Add(reservedSeat);
                             }
                         }
                     }
@@ -304,7 +281,6 @@ namespace persistance
             {
                 logger.LogError(e, "Database error while finding ReservedSeat by trip destination, date and time: {Destination}: {Date}, {Time}", destination, date, time);
             }
-
             return reservedSeats;
         }
     }

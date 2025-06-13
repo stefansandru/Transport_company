@@ -51,13 +51,13 @@ public class MainAppController implements Initializable, IObserver {
     private TextField searchTimeField;
 
     @FXML
-    private TableView<SeatDTO> seatsTable;
+    private TableView<Seat> seatsTable;
 
     @FXML
-    private TableColumn<SeatDTO, Integer> seatNumberColumn;
+    private TableColumn<Seat, Integer> seatNumberColumn;
 
     @FXML
-    private TableColumn<SeatDTO, String> clientNameColumn;
+    private TableColumn<Seat, String> clientNameColumn;
 
     @FXML
     private TextField clientNameField;
@@ -158,7 +158,7 @@ public class MainAppController implements Initializable, IObserver {
             }
             tripToReserve = newTrip;
             logger.debug("Trip found: {}", tripToReserve);
-            List<SeatDTO> seats = server.searchTripSeats(
+            List<Seat> seats = server.searchTripSeats(
                     tripToReserve.getDestination().getName(),
                     tripToReserve.getDepartureDate(),
                     tripToReserve.getDepartureTime()

@@ -1,4 +1,3 @@
-using Avalonia.Data;
 using System.Collections.Generic;
 
 namespace persistance
@@ -14,8 +13,8 @@ namespace persistance
         /// Finds an entity by its identifier.
         /// </summary>
         /// <param name="id">The identifier of the entity to find.</param>
-        /// <returns>An <see cref="Optional{TEntity}"/> containing the found entity, if any.</returns>
-        Optional<TEntity> FindById(TId id);
+        /// <returns>The found entity, or null if not found.</returns>
+        TEntity? FindById(TId id);
 
         /// <summary>
         /// Finds all entities.
@@ -27,21 +26,21 @@ namespace persistance
         /// Saves a new entity.
         /// </summary>
         /// <param name="entity">The entity to save.</param>
-        /// <returns>An <see cref="Optional{TEntity}"/> containing the saved entity.</returns>
-        Optional<TEntity> Save(TEntity entity);
+        /// <returns>The saved entity, or null if the operation failed.</returns>
+        TEntity? Save(TEntity entity);
 
         /// <summary>
         /// Updates an existing entity.
         /// </summary>
         /// <param name="entity">The entity to update.</param>
-        /// <returns>An <see cref="Optional{TEntity}"/> containing the updated entity.</returns>
-        Optional<TEntity> Update(TEntity entity);
+        /// <returns>The updated entity, or null if the operation failed.</returns>
+        TEntity? Update(TEntity entity);
 
         /// <summary>
         /// Deletes an entity by its identifier.
         /// </summary>
         /// <param name="id">The identifier of the entity to delete.</param>
-        /// <returns>An <see cref="Optional{TEntity}"/> containing the deleted entity, if any.</returns>
-        Optional<TEntity> Delete(TId id);
+        /// <returns>The deleted entity, or null if not found.</returns>
+        TEntity? Delete(TId id);
     }
 }

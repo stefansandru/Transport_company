@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Avalonia.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using model;
@@ -15,7 +14,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         // Constructor specific for ClientRepository, if needed
     }
 
-    public override Optional<Client> FindById(int id)
+    public override Client? FindById(int id)
     {
         logger.LogInformation("Find Client by ID: {Id}", id);
 
@@ -33,7 +32,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
                     if (reader.Read())
                     {
                         var name = reader.GetString(reader.GetOrdinal("name"));
-                        return new Optional<Client>(new Client(id, name));
+                        return new Client(id, name);
                     }
                 }
             }
@@ -43,10 +42,10 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
             logger.LogError(e, "Database error while finding Client with ID {Id}", id);
         }
 
-        return new Optional<Client>();
+        return null;
     }
 
-    public Optional<Client> FindByUsername(string username)
+    public Client? FindByUsername(string username)
     {
         logger.LogInformation("Find Client by username: {Username}", username);
 
@@ -67,7 +66,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
                     if (reader.Read())
                     {
                         var id = reader.GetInt32(reader.GetOrdinal("id"));
-                        return new Optional<Client>(new Client(id, username));
+                        return new Client(id, username);
                     }
                 }
             }
@@ -77,7 +76,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
             logger.LogError(e, "Database error while finding Client with username {Username}", username);
         }
 
-        return new Optional<Client>();
+        return null;
     }
 
     public Client FindByName(string name)
@@ -147,41 +146,41 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         return clients;
     }
 
-    public override Optional<Client> Save(Client client)
+    public override Client? Save(Client client)
+    {
+        logger.LogInformation("Save Client: {Client}", client);
+
+        if (client == null)
+            throw new ArgumentNullException(nameof(client));
+
+        const string query = "INSERT INTO Client (name) VALUES (@name) RETURNING Id;";
+        try
         {
-            logger.LogInformation("Save Client: {Client}", client);
-
-            if (client == null)
-                throw new ArgumentNullException(nameof(client));
-
-            const string query = "INSERT INTO Client (name) VALUES (@name) RETURNING Id;";
-            try
+            using (var connection = jdbc.GetConnection())
+            using (var command = new SqliteCommand(query, (SqliteConnection)connection))
             {
-                using (var connection = jdbc.GetConnection())
-                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
-                {
-                    command.Parameters.AddWithValue("@name", client.Name);
-                    connection.Open();
-                    var id = Convert.ToInt32(command.ExecuteScalar());
-                    return new Optional<Client>(new Client(id, client.Name));
-                }
+                command.Parameters.AddWithValue("@name", client.Name);
+                connection.Open();
+                var id = Convert.ToInt32(command.ExecuteScalar());
+                return new Client(id, client.Name);
             }
-            catch (SqliteException e)
-            {
-                logger.LogError(e, "Database error while saving Client: {Client}", client);
-            }
-
-            return new Optional<Client>();
         }
-    
-    public override Optional<Client> Delete(int id)
+        catch (SqliteException e)
+        {
+            logger.LogError(e, "Database error while saving Client: {Client}", client);
+        }
+
+        return null;
+    }
+
+    public override Client? Delete(int id)
     {
         logger.LogInformation("Delete Client with ID: {Id}", id);
 
         var clientToDelete = FindById(id);
-        if (!clientToDelete.HasValue)
+        if (clientToDelete == null)
         {
-            return new Optional<Client>();
+            return null;
         }
 
         const string query = "DELETE FROM Client WHERE id = @id";
@@ -205,10 +204,10 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
             logger.LogError(e, "Database error while deleting Client with ID {Id}", id);
         }
 
-        return new Optional<Client>();
+        return null;
     }
 
-    public override Optional<Client> Update(Client client)
+    public override Client? Update(Client client)
     {
         logger.LogInformation("Update Client: {Client}", client);
 
@@ -228,7 +227,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
                 if (affectedRows > 0)
                 {
-                    return new Optional<Client>(client);
+                    return client;
                 }
             }
         }
@@ -237,6 +236,6 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
             logger.LogError(e, "Database error while updating Client: {Client}", client);
         }
 
-        return new Optional<Client>();
+        return null;
     }
 }

@@ -2,7 +2,6 @@ package ro.mpp2024;
 
 import io.grpc.ManagedChannel;
 import io.grpc.stub.StreamObserver;
-import javafx.application.Platform;
 import ro.mpp2024.proto.*;
 import ro.mpp2024.utils.DTOUtils;
 
@@ -98,7 +97,7 @@ public class GrpcServicesProxy implements IServices {
     }
 
     @Override
-    public List<SeatDTO> searchTripSeats(String destination, LocalDate date, LocalTime time)
+    public List<Seat> searchTripSeats(String destination, LocalDate date, LocalTime time)
             throws ServicesException {
         try {
             SearchTripSeatsReply response = grpcStub.searchTripSeats(
@@ -108,9 +107,9 @@ public class GrpcServicesProxy implements IServices {
                                            .setTime(time.toString())
                                            .build());
 
-            List<SeatDTO> seats = new ArrayList<>();
+            List<Seat> seats = new ArrayList<>();
             for (SeatDTODTO dto : response.getSeatsList()) {
-                seats.add(new SeatDTO(dto.getSeatNumber(), dto.getClientName()));
+                seats.add(new Seat(dto.getSeatNumber(), dto.getClientName()));
             }
             return seats;
         } catch (Exception e) {
@@ -154,10 +153,10 @@ public class GrpcServicesProxy implements IServices {
                 try {
                     observer.seatsReserved();
                 } catch (ServicesException e) {
-                    // log
+                    // todo: log
                 }
             }
-            @Override public void onError(Throwable t)  { /* log */ }
+            @Override public void onError(Throwable t)  { /* todo: log */ }
             @Override public void onCompleted()         { }
         };
 

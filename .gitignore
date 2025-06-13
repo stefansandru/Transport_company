@@ -40,3 +40,35 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# C#/.NET build artifacts
+**/bin/
+**/obj/
+*.g.cs
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.GlobalUsings.g.cs
+*.AssemblyInfo.cs
+*.sourcelink.json
+*.pdb
+*.dll
+*.cache
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+project.assets.json
+project.packagespec.json
+rider.project.model.nuget.info
+rider.project.restore.info
+
+# Java build artifacts
+**/target/
+**/build/
+
+# Exclude database files (if not needed in repo)
+*.db
+
+# Exclude user-specific settings
+*.DotSettings.user
+
+# Exclude logs
+*.log
