@@ -8,15 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "persistance", "persistance\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "networking", "networking\networking.csproj", "{0FDE780E-C5D5-40E5-A71A-47F3E21673A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "client\client.csproj", "{746C3553-E870-4725-8A76-ADDD38CFD1A7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csproj", "{AFE6C10A-5427-458F-9B3A-9909F978C0F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grpcServer", "grpcServer\grpcServer.csproj", "{6D05269D-2029-49B4-9DBE-D11405BD68E6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grpcClient", "grpcClient\grpcClient.csproj", "{F86C6CEA-C879-48E7-AACC-95AC5BD15E11}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testREST", "testREST\testREST.csproj", "{003251B5-E473-4DA9-88AE-CE2E9110ABDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +34,6 @@ Global
 		{0FDE780E-C5D5-40E5-A71A-47F3E21673A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FDE780E-C5D5-40E5-A71A-47F3E21673A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FDE780E-C5D5-40E5-A71A-47F3E21673A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{746C3553-E870-4725-8A76-ADDD38CFD1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{746C3553-E870-4725-8A76-ADDD38CFD1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{746C3553-E870-4725-8A76-ADDD38CFD1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{746C3553-E870-4725-8A76-ADDD38CFD1A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AFE6C10A-5427-458F-9B3A-9909F978C0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AFE6C10A-5427-458F-9B3A-9909F978C0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE6C10A-5427-458F-9B3A-9909F978C0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,14 +42,6 @@ Global
 		{6D05269D-2029-49B4-9DBE-D11405BD68E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D05269D-2029-49B4-9DBE-D11405BD68E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D05269D-2029-49B4-9DBE-D11405BD68E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F86C6CEA-C879-48E7-AACC-95AC5BD15E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F86C6CEA-C879-48E7-AACC-95AC5BD15E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F86C6CEA-C879-48E7-AACC-95AC5BD15E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F86C6CEA-C879-48E7-AACC-95AC5BD15E11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{003251B5-E473-4DA9-88AE-CE2E9110ABDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{003251B5-E473-4DA9-88AE-CE2E9110ABDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{003251B5-E473-4DA9-88AE-CE2E9110ABDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{003251B5-E473-4DA9-88AE-CE2E9110ABDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

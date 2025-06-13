@@ -8,9 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenLocalhost(5000, o => o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2);
+    options.ListenLocalhost(
+        5000,
+        o => o.Protocols = 
+                Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2
+                );
 });
-
 
 builder.Services.AddGrpc();
 
@@ -23,7 +26,7 @@ builder.Services.AddSingleton<IReservedSeatRepository, ReservedSeatRepository>()
 
 var app = builder.Build();
 
-app.MapGrpcService<TransportCompanyService>(); // Fără argument!
+app.MapGrpcService<TransportCompanyService>();
 
 app.MapGet("/", () => "gRPC server running!");
 
