@@ -1,0 +1,15 @@
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/bin/Debug/net9.0/testREST
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/bin/Debug/net9.0/testREST.deps.json
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/bin/Debug/net9.0/testREST.runtimeconfig.json
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/bin/Debug/net9.0/testREST.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/bin/Debug/net9.0/testREST.pdb
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.AssemblyInfoInputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.AssemblyInfo.cs
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.csproj.CoreCompileInputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.sourcelink.json
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/refint/testREST.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.pdb
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/testREST.genruntimeconfig.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/testREST/obj/Debug/net9.0/ref/testREST.dll

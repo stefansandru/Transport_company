@@ -1,0 +1,353 @@
+using Microsoft.Data.Sqlite;
+using Avalonia.Data;
+using Microsoft.Extensions.Logging;
+using model;
+
+namespace persistance
+{
+    public class TripRepository : AbstractRepository<int, Trip>, ITripRepository
+    {
+        private readonly IDestinationRepository destinationRepository;
+
+        public TripRepository(IDestinationRepository destinationRepository) : base()
+        {
+            this.destinationRepository = destinationRepository;
+        }
+
+        private Optional<Trip> ExtractTripFromResultSet(SqliteDataReader reader)
+        {
+            try
+            {
+                var id = reader.GetInt32(reader.GetOrdinal("id"));
+                var destinationId = reader.GetInt32(reader.GetOrdinal("destination_id"));
+                var departureDate = DateOnly.FromDateTime(reader.GetDateTime(reader.GetOrdinal("departure_date")));
+                var departureTime = TimeOnly.FromTimeSpan(reader.GetDateTime(reader.GetOrdinal("departure_time")).TimeOfDay);
+                var availableSeats = reader.GetInt32(reader.GetOrdinal("available_seats"));
+
+                var destination = destinationRepository.FindById(destinationId).Value;
+                return new Optional<Trip>(new Trip(id, destination, departureDate, departureTime, availableSeats));
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Error while extracting Trip from ResultSet");
+                return new Optional<Trip>();
+            }
+        }
+
+        public override Optional<Trip> FindById(int id)
+        {
+            logger.LogInformation("Find Trip by ID: {Id}", id);
+
+            const string query = "SELECT * FROM Trip WHERE id = @id";
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var trip = ExtractTripFromResultSet(reader); 
+                            return trip;
+                        }
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while finding Trip with ID {Id}", id);
+            }
+
+            return new Optional<Trip>();
+        }
+
+        public override IEnumerable<Trip> FindAll()
+        {
+            logger.LogInformation("Find all Trips");
+
+            var trips = new List<Trip>();
+            const string query = "SELECT * FROM Trip";
+
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var trip = ExtractTripFromResultSet(reader);
+                            if (trip.HasValue)
+                            {
+                                trips.Add(trip.Value);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while finding all Trips");
+            }
+            
+            return trips;
+        }
+
+        public IEnumerable<Trip> FindByDestinationId(int destinationId)
+        {
+            logger.LogInformation("Find Trips by Destination ID: {DestinationId}", destinationId);
+
+            var trips = new List<Trip>();
+            const string query = "SELECT * FROM Trip WHERE destination_id = @destination_id";
+
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@destination_id", destinationId);
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var trip = ExtractTripFromResultSet(reader);
+                            if (trip.HasValue)
+                            {
+                                trips.Add(trip.Value);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while finding Trips for destination ID {DestinationId}", destinationId);
+            }
+
+            return trips;
+        }
+
+        public IEnumerable<Trip> FindByDepartureDate(DateTime departureDate)
+        {
+            logger.LogInformation("Find Trips by Departure Date: {DepartureDate}", departureDate);
+
+            var trips = new List<Trip>();
+            const string query = "SELECT * FROM Trip WHERE departure_date = @departure_date";
+
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@departure_date", departureDate);
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var trip = ExtractTripFromResultSet(reader);
+                            if (trip.HasValue)
+                            {
+                                trips.Add(trip.Value);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while finding Trips for departure date {DepartureDate}", departureDate);
+            }
+
+            return trips;
+        }
+
+        public override Optional<Trip> Save(Trip trip)
+        {
+            logger.LogInformation("Save Trip: {Trip}", trip);
+
+            const string insertQuery = "INSERT INTO Trip (destination_id, departure_date, departure_time, available_seats) VALUES (@destination_id, @departure_date, @departure_time, @available_seats)";
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                {
+                    connection.Open();
+                    using (var command = new SqliteCommand(insertQuery, (SqliteConnection)connection))
+                    {
+                        command.Parameters.AddWithValue("@destination_id", trip.Destination.Id);
+                        command.Parameters.AddWithValue("@departure_date", trip.DepartureDate);
+                        command.Parameters.AddWithValue("@departure_time", trip.DepartureTime);
+                        command.Parameters.AddWithValue("@available_seats", trip.AvailableSeats);
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Get the last inserted ID using SQLite's last_insert_rowid()
+                    using (var idCommand = new SqliteCommand("SELECT last_insert_rowid()", (SqliteConnection)connection))
+                    {
+                        var id = Convert.ToInt32(idCommand.ExecuteScalar());
+                        trip.Id = id;
+                        return new Optional<Trip>(trip);
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while saving Trip: {Trip}", trip);
+            }
+
+            return new Optional<Trip>();
+        }
+
+        public override Optional<Trip> Delete(int id)
+        {
+            logger.LogInformation("Delete Trip with ID: {Id}", id);
+
+            var tripToDelete = FindById(id);
+            if (!tripToDelete.HasValue)
+            {
+                return new Optional<Trip>();
+            }
+
+            const string query = "DELETE FROM Trip WHERE id = @id";
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    connection.Open();
+                    var affectedRows = command.ExecuteNonQuery();
+
+                    if (affectedRows > 0)
+                    {
+                        return tripToDelete;
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while deleting Trip with ID {Id}", id);
+            }
+
+            return new Optional<Trip>();
+        }
+
+        public override Optional<Trip> Update(Trip trip)
+        {
+            logger.LogInformation("Update Trip: {Trip}", trip);
+
+            const string query = "UPDATE Trip SET destination_id = @destination_id, departure_date = @departure_date, departure_time = @departure_time, available_seats = @available_seats WHERE id = @id";
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@destination_id", trip.Destination.Id);
+                    command.Parameters.AddWithValue("@departure_date", trip.DepartureDate);
+                    command.Parameters.AddWithValue("@departure_time", trip.DepartureTime.ToString("HH:mm"));
+                    command.Parameters.AddWithValue("@available_seats", trip.AvailableSeats);
+                    command.Parameters.AddWithValue("@id", trip.Id);
+                    connection.Open();
+                    var affectedRows = command.ExecuteNonQuery();
+
+                    if (affectedRows > 0)
+                    {
+                        return new Optional<Trip>(trip);
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while updating Trip: {Trip}", trip);
+            }
+
+            return new Optional<Trip>();
+        }
+
+        public IEnumerable<Trip> FindAllByName(string name)
+        {
+            logger.LogInformation("Find all Trips by name: {Name}", name);
+
+            var trips = new List<Trip>();
+            const string query = "SELECT * FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE d.name = @name";
+
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var trip = ExtractTripFromResultSet(reader);
+                            if (trip.HasValue)
+                            {
+                                trips.Add(trip.Value);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while finding all Trips by name {Name}", name);
+            }
+
+            return trips;
+        }
+
+        public Trip FindByDestinationAndDateAndTime(string destination, string dateString, string timeString)
+        {
+            logger.LogInformation("Find Trip by destination, date, and time: {Destination}, {Date}, {Time}", destination, dateString, timeString);
+
+            const string query = @"
+        SELECT * FROM Trip t
+        JOIN Destination d ON t.destination_id = d.id
+        WHERE d.name = @destination AND t.departure_date = @date AND t.departure_time = @time";
+
+            try
+            {
+                using (var connection = jdbc.GetConnection())
+                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
+                {
+                    command.Parameters.AddWithValue("@destination", destination);
+                    command.Parameters.AddWithValue("@date", dateString);
+                    command.Parameters.AddWithValue("@time", timeString);
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var trip = ExtractTripFromResultSet(reader);
+                            if (trip.HasValue)
+                            {
+                                return trip.Value;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqliteException e)
+            {
+                logger.LogError(e, "Database error while finding Trip by destination, date, and time: {Destination}, {Date}, {Time}", destination, dateString, timeString);
+            }
+
+            return null;
+        }
+    }
+}

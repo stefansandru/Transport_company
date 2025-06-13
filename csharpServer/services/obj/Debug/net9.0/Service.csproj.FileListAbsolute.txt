@@ -1,0 +1,7 @@
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Service.csproj.AssemblyReference.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Service.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Service.AssemblyInfoInputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Service.AssemblyInfo.cs
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Service.csproj.CoreCompileInputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/Service/obj/Debug/net9.0/Service.sourcelink.json

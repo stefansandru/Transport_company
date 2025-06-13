@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+option java_package = "ro.mpp2024.proto";
+option java_multiple_files = true;
+
+option csharp_namespace = "TransportCompany.GrpcServer";
+
+service TransportCompany {
+  rpc Login (LoginRequest) returns (LoginReply);
+  rpc GetAllTrips (AllTripsRequest) returns (TripsReply);
+  rpc SearchTripSeats (SearchTripSeatsRequest) returns (SearchTripSeatsReply);
+  rpc ReserveSeats (ReserveSeatsRequest) returns (ReserveSeatsReply);
+  rpc NotifySeatsReserved(NotifySeatsReservedRequest) returns (stream NotifySeatsReservedReply);
+  rpc GetTrip (GetTripRequest) returns (GetTripReply);
+  rpc Logout (LogoutRequest) returns (LogoutReply);
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginReply {
+  int32 employeeId = 1;
+  string username = 2;
+}
+
+message AllTripsRequest {}
+
+message TripDTO {
+  int32 id = 1;
+  string destination = 2;
+  string date = 3;
+  string time = 4;
+  int32 availableSeats = 5;
+}
+
+message TripsReply {
+  repeated TripDTO trips = 1;
+}
+
+message SearchTripSeatsRequest {
+  string destination = 1;
+  string date = 2;
+  string time = 3;
+}
+
+message SeatDTODTO {
+  int32 seatNumber = 1;
+  string clientName = 2;
+}
+
+message SearchTripSeatsReply {
+  repeated SeatDTODTO seats = 1;
+}
+
+message ReserveSeatsRequest {
+  string clientName = 1;
+  repeated int32 seatNumbers = 2;
+  TripDTO trip = 3;
+  int32 employeeId = 4;
+}
+
+message ReserveSeatsReply {
+  bool success = 1;
+  string message = 2;
+}
+
+message NotifySeatsReservedRequest {
+  int32 employeeId = 1;
+}
+
+message NotifySeatsReservedReply {}
+
+message GetTripRequest {
+  string destination = 1;
+  string date = 2;
+  string time = 3;
+}
+
+message GetTripReply {
+  TripDTO trip = 1;
+}
+
+message LogoutRequest {
+  int32 employeeId = 1;
+}
+
+message LogoutReply {
+  bool success = 1;
+  string message = 2;
+}

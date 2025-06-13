@@ -1,0 +1,44 @@
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.csproj.AssemblyReference.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.AssemblyInfoInputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.AssemblyInfo.cs
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.csproj.CoreCompileInputs.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.sourcelink.json
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/grpcClient
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/grpcClient.deps.json
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/grpcClient.runtimeconfig.json
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/grpcClient.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/grpcClient.pdb
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/Google.Protobuf.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/Grpc.Core.Api.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/Grpc.Net.Client.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/Grpc.Net.Common.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.csproj.Up2Date
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/refint/grpcClient.dll
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.pdb
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/grpcClient.genruntimeconfig.cache
+/Users/stefansandru/Documents/mpp/transport-company-cs copy networking/grpcClient/obj/Debug/net9.0/ref/grpcClient.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/grpcClient
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/grpcClient.deps.json
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/grpcClient.runtimeconfig.json
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/grpcClient.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/grpcClient.pdb
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/Google.Protobuf.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/Grpc.Core.Api.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/Grpc.Net.Client.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/Grpc.Net.Common.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.csproj.AssemblyReference.cache
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.AssemblyInfoInputs.cache
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.AssemblyInfo.cs
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.csproj.CoreCompileInputs.cache
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.sourcelink.json
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.csproj.Up2Date
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/refint/grpcClient.dll
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.pdb
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/grpcClient.genruntimeconfig.cache
+/Users/stefansandru/Documents/mpp/mpp-proiect-csharp-stefansandru/grpcClient/obj/Debug/net9.0/ref/grpcClient.dll

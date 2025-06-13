@@ -1,0 +1,2 @@
+obj/Debug/net9.0/Protos/TransportCompany.cs \
+obj/Debug/net9.0/Protos/TransportCompanyGrpc.cs: Protos/TransportCompany.proto
