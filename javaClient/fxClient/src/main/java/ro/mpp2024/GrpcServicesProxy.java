@@ -10,7 +10,17 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Thin wrapper around the gRPC stubs generated from <code>transport-company.proto</code>.
+ * The proxy hides wire-level details from the JavaFX controllers and converts between
+ * DTOs and plain domain objects.
+ */
 public class GrpcServicesProxy implements IServices {
+    /**
+     * Thin wrapper around the gRPC stubs generated from <code>transport-company.proto</code>.
+     * The proxy hides wire-level details from the JavaFX controllers and converts between
+     * DTOs and plain domain objects.
+     */
     private final ManagedChannel channel;                                   // reţinem canalul
     private final TransportCompanyGrpc.TransportCompanyBlockingStub grpcStub;
     private final TransportCompanyGrpc.TransportCompanyStub asyncStub;
