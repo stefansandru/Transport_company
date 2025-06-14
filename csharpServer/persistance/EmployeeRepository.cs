@@ -10,7 +10,7 @@ public class EmployeeRepository : AbstractRepository<int, Employee>, IEmployeeRe
 {
     private readonly IOfficeRepository officeRepository;
 
-    public EmployeeRepository(IOfficeRepository officeRepository) : base()
+    public EmployeeRepository(IOfficeRepository officeRepository, JdbcUtils jdbc) : base(jdbc)
     {
         this.officeRepository = officeRepository;
     }

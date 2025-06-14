@@ -9,14 +9,16 @@ namespace persistance;
 
 public class ClientRepository : AbstractRepository<int, Client>, IClientRepository
 {
-    public ClientRepository() : base()
+    private readonly ILogger<ClientRepository> _logger;
+
+    public ClientRepository(JdbcUtils jdbc, ILogger<ClientRepository> logger) : base(jdbc)
     {
-        // Constructor specific for ClientRepository, if needed
+        _logger = logger;
     }
 
     public override Client? FindById(int id)
     {
-        logger.LogInformation("Find Client by ID: {Id}", id);
+        _logger.LogInformation("Find Client by ID: {Id}", id);
 
         const string query = "SELECT * FROM Client WHERE id = @id";
         try
@@ -39,7 +41,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while finding Client with ID {Id}", id);
+            _logger.LogError(e, "Database error while finding Client with ID {Id}", id);
         }
 
         return null;
@@ -47,7 +49,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
     public Client? FindByUsername(string username)
     {
-        logger.LogInformation("Find Client by username: {Username}", username);
+        _logger.LogInformation("Find Client by username: {Username}", username);
 
         if (string.IsNullOrEmpty(username))
             throw new ArgumentException("Username must not be null or empty", nameof(username));
@@ -73,7 +75,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while finding Client with username {Username}", username);
+            _logger.LogError(e, "Database error while finding Client with username {Username}", username);
         }
 
         return null;
@@ -81,7 +83,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
     public Client FindByName(string name)
     {
-        logger.LogInformation("Find Client by name: {Name}", name);
+        _logger.LogInformation("Find Client by name: {Name}", name);
 
         if (string.IsNullOrEmpty(name))
             throw new ArgumentException("Name must not be null or empty", nameof(name));
@@ -107,7 +109,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while finding Client with name {Name}", name);
+            _logger.LogError(e, "Database error while finding Client with name {Name}", name);
         }
 
         return null;
@@ -115,7 +117,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
     public override IEnumerable<Client> FindAll()
     {
-        logger.LogInformation("Find all Clients");
+        _logger.LogInformation("Find all Clients");
 
         var clients = new List<Client>();
         const string query = "SELECT * FROM Client";
@@ -140,7 +142,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while finding all Clients");
+            _logger.LogError(e, "Database error while finding all Clients");
         }
 
         return clients;
@@ -148,7 +150,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
     public override Client? Save(Client client)
     {
-        logger.LogInformation("Save Client: {Client}", client);
+        _logger.LogInformation("Save Client: {Client}", client);
 
         if (client == null)
             throw new ArgumentNullException(nameof(client));
@@ -167,7 +169,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while saving Client: {Client}", client);
+            _logger.LogError(e, "Database error while saving Client: {Client}", client);
         }
 
         return null;
@@ -175,7 +177,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
     public override Client? Delete(int id)
     {
-        logger.LogInformation("Delete Client with ID: {Id}", id);
+        _logger.LogInformation("Delete Client with ID: {Id}", id);
 
         var clientToDelete = FindById(id);
         if (clientToDelete == null)
@@ -201,7 +203,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while deleting Client with ID {Id}", id);
+            _logger.LogError(e, "Database error while deleting Client with ID {Id}", id);
         }
 
         return null;
@@ -209,7 +211,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 
     public override Client? Update(Client client)
     {
-        logger.LogInformation("Update Client: {Client}", client);
+        _logger.LogInformation("Update Client: {Client}", client);
 
         if (client == null)
             throw new ArgumentNullException(nameof(client));
@@ -233,7 +235,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
         }
         catch (SqliteException e)
         {
-            logger.LogError(e, "Database error while updating Client: {Client}", client);
+            _logger.LogError(e, "Database error while updating Client: {Client}", client);
         }
 
         return null;

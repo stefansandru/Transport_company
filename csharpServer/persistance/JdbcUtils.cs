@@ -1,7 +1,7 @@
 using System.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
-using NLog;
+using Microsoft.Extensions.Logging;
 
 
 namespace persistance;
@@ -9,36 +9,59 @@ namespace persistance;
 public class JdbcUtils
 {
     private readonly string connectionString;
-    // private static readonly ILogger logger;
-    private static readonly Logger logger = LogManager.GetCurrentClassLogger(); // Use NLog's Logger
-
-
+    private readonly ILogger<JdbcUtils> _logger;
     private IDbConnection instance = null;
 
-    public JdbcUtils()
+    public JdbcUtils(ILogger<JdbcUtils> logger)
     {
+        _logger = logger;
+
         // Load database configuration from appsettings.json
         var configuration = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json")
             .Build();
 
-        connectionString = configuration.GetConnectionString("DefaultConnection");
+        var rawConnectionString = configuration.GetConnectionString("DefaultConnection");
+        var dataSourcePrefix = "Data Source=";
+        if (rawConnectionString.StartsWith(dataSourcePrefix))
+        {
+            var dbPath = rawConnectionString.Substring(dataSourcePrefix.Length);
+            if (!Path.IsPathRooted(dbPath))
+            {
+                dbPath = Path.Combine(AppContext.BaseDirectory, dbPath);
+                rawConnectionString = $"{dataSourcePrefix}{dbPath}";
+            }
+        }
+        _logger.LogInformation($"Using connection string: {rawConnectionString}");
+        connectionString = rawConnectionString;
+
+        _logger.LogDebug($"Checking DB file: {rawConnectionString}");
+        var dbPathToCheck = rawConnectionString.StartsWith(dataSourcePrefix)
+            ? rawConnectionString.Substring(dataSourcePrefix.Length)
+            : rawConnectionString;
+        if (!File.Exists(dbPathToCheck))
+        {
+            _logger.LogError($"Database file does not exist at: {dbPathToCheck}");
+        }
+        else
+        {
+            _logger.LogDebug($"Database file found at: {dbPathToCheck}");
+        }
     }
 
     private IDbConnection GetNewConnection()
     {
-        logger.Trace("Entering GetNewConnection");
-
         IDbConnection connection = null;
         try
         {
             connection = new SqliteConnection(connectionString);
             connection.Open();
-            logger.Info("Successfully connected to the database.");
+            _logger.LogInformation("Successfully connected to the database.");
         }
         catch (SqliteException e)
         {
-            logger.Error(e, "Error getting connection");
+            _logger.LogError(e, "Error getting connection");
             Console.WriteLine($"Error getting connection: {e.Message}");
         }
 
@@ -47,7 +70,6 @@ public class JdbcUtils
 
     public IDbConnection GetConnection()
     {
-        logger.Trace("Entering GetConnection");
         try
         {
             if (instance == null || instance.State == ConnectionState.Closed)
@@ -57,10 +79,9 @@ public class JdbcUtils
         }
         catch (Exception e)
         {
-            logger.Error(e, "Error with database connection");
+            _logger.LogError(e, "Error with database connection");
             Console.WriteLine($"Error DB: {e.Message}");
         }
-        logger.Trace("Exiting GetConnection");
         return instance;
     }
 }

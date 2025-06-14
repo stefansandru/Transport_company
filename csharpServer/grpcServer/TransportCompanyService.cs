@@ -3,6 +3,7 @@ using Grpc.Core;
 using TransportCompany.GrpcServer;
 using model;
 using persistance;
+using Microsoft.Extensions.Logging;
 
 namespace grpcServer;
 
@@ -12,6 +13,7 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
     private readonly IEmployeeRepository _employeeRepository;
     private readonly ITripRepository _tripRepository;
     private readonly IReservedSeatRepository _reservedSeatRepository;
+    private readonly ILogger<TransportCompanyService> _logger;
 
     // Lista employeeId -> bool pentru login unic
     private static readonly ConcurrentDictionary<int, bool> LoggedInEmployees = new();
@@ -23,12 +25,14 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
         IClientRepository clientRepository,
         IEmployeeRepository employeeRepository, 
         ITripRepository tripRepository,
-        IReservedSeatRepository reservedSeatRepository)
+        IReservedSeatRepository reservedSeatRepository,
+        ILogger<TransportCompanyService> logger)
     {
         _clientRepository = clientRepository;
         _employeeRepository = employeeRepository;
         _tripRepository = tripRepository;
         _reservedSeatRepository = reservedSeatRepository;
+        _logger = logger;
     }  
 
     public override Task<LoginReply> Login(LoginRequest request, ServerCallContext context)
@@ -37,25 +41,25 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
 
         if (employee == null)
         {
-            Console.WriteLine("Employee not found!");
+            _logger.LogWarning("Employee not found!");
             return Task.FromResult(new LoginReply { EmployeeId = -1, Username = "INVALID" });
         }
 
         // NU PERMITE LOGIN DUBLU
         if (LoggedInEmployees.ContainsKey(employee.Id))
         {
-            Console.WriteLine("Employee already logged in!");
+            _logger.LogWarning("Employee already logged in!");
             return Task.FromResult(new LoginReply { EmployeeId = -3, Username = "ALREADY_LOGGED" });
         }
 
         if (!BCrypt.Net.BCrypt.Verify(request.Password, employee.Password))
         {
-            Console.WriteLine("Invalid password!");
+            _logger.LogWarning("Invalid password!");
             return Task.FromResult(new LoginReply { EmployeeId = -2, Username = "INVALID" });
         }
         
         LoggedInEmployees[employee.Id] = true;
-        Console.WriteLine($"Login reușit pentru {employee.Username} ");
+        _logger.LogInformation($"Login reușit pentru {employee.Username} ");
 
         return Task.FromResult(new LoginReply
         {
@@ -68,7 +72,7 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
     {
         LoggedInEmployees.TryRemove(request.EmployeeId, out _);
         EmployeeStreams.TryRemove(request.EmployeeId, out _);
-        Console.WriteLine($"Logout pentru employeeId={request.EmployeeId}");
+        _logger.LogInformation($"Logout pentru employeeId={request.EmployeeId}");
 
         return Task.FromResult(new LogoutReply
         {
@@ -104,8 +108,8 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid time format"));
 
         var trip = _tripRepository.FindByDestinationAndDateAndTime(request.Destination, request.Date, request.Time);
-        Console.WriteLine("Trip found:");
-        Console.WriteLine(trip);
+        _logger.LogInformation("Trip found:");
+        _logger.LogInformation(trip?.ToString());
 
         if (trip == null)
             return Task.FromResult(new GetTripReply());
@@ -180,7 +184,7 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
         }
 
         trip.AvailableSeats = (trip.AvailableSeats ?? 0) - request.SeatNumbers.Count;
-        _tripRepository.Update(trip);
+        // _tripRepository.Update(trip);
 
         // NOTIFICĂ TOȚI CLIENTII LOGAȚI (mai puțin pe cel care rezervă acum)
         foreach (var entry in EmployeeStreams)

@@ -6,38 +6,19 @@ namespace persistance
 {
     public class TripRepository : AbstractRepository<int, Trip>, ITripRepository
     {
-        private readonly IDestinationRepository destinationRepository;
-
-        public TripRepository(IDestinationRepository destinationRepository) : base()
+        private readonly ILogger<TripRepository> _logger;
+        public TripRepository(ILogger<TripRepository> logger, JdbcUtils jdbc) : base(jdbc)
         {
-            this.destinationRepository = destinationRepository;
-        }
-
-        private Trip? ExtractTripFromResultSet(SqliteDataReader reader)
-        {
-            try
-            {
-                var id = reader.GetInt32(reader.GetOrdinal("id"));
-                var destinationId = reader.GetInt32(reader.GetOrdinal("destination_id"));
-                var departureDate = DateOnly.FromDateTime(reader.GetDateTime(reader.GetOrdinal("departure_date")));
-                var departureTime = TimeOnly.FromTimeSpan(reader.GetDateTime(reader.GetOrdinal("departure_time")).TimeOfDay);
-                var availableSeats = reader.GetInt32(reader.GetOrdinal("available_seats"));
-
-                var destination = destinationRepository.FindById(destinationId);
-                if (destination == null) return null;
-                return new Trip(id, destination, departureDate, departureTime, availableSeats);
-            }
-            catch (SqliteException e)
-            {
-                logger.LogError(e, "Error while extracting Trip from ResultSet");
-                return null;
-            }
+            _logger = logger;
         }
 
         public override Trip? FindById(int id)
         {
-            logger.LogInformation("Find Trip by ID: {Id}", id);
-            const string query = "SELECT * FROM Trip WHERE id = @id";
+            _logger.LogInformation("Find Trip by ID: {Id}", id);
+            const string query = @"SELECT t.id, t.departure_date, t.departure_time, 
+                t.available_seats - IFNULL((SELECT COUNT(*) FROM ReservedSeats rs WHERE rs.trip_id = t.id), 0) AS available_seats, 
+                d.id as destination_id, d.name as destination_name
+                FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE t.id = @id";
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -49,23 +30,27 @@ namespace persistance
                     {
                         if (reader.Read())
                         {
-                            return ExtractTripFromResultSet(reader);
+                            var trip = ReadTripWithDestination(reader);
+                            return trip;
                         }
                     }
                 }
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding Trip with ID {Id}", id);
+                _logger.LogError(e, "Database error while finding Trip with ID {Id}", id);
             }
             return null;
         }
 
         public override IEnumerable<Trip> FindAll()
         {
-            logger.LogInformation("Find all Trips");
+            _logger.LogInformation("Find all Trips");
             var trips = new List<Trip>();
-            const string query = "SELECT * FROM Trip";
+            const string query = @"SELECT t.id, t.departure_date, t.departure_time, 
+                t.available_seats - IFNULL((SELECT COUNT(*) FROM ReservedSeats rs WHERE rs.trip_id = t.id), 0) AS available_seats, 
+                d.id as destination_id, d.name as destination_name
+                FROM Trip t JOIN Destination d ON t.destination_id = d.id";
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -76,7 +61,7 @@ namespace persistance
                     {
                         while (reader.Read())
                         {
-                            var trip = ExtractTripFromResultSet(reader);
+                            var trip = ReadTripWithDestination(reader);
                             if (trip != null)
                             {
                                 trips.Add(trip);
@@ -87,18 +72,19 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding all Trips");
+                _logger.LogError(e, "Database error while finding all Trips");
             }
             return trips;
         }
 
         public IEnumerable<Trip> FindByDestinationId(int destinationId)
         {
-            logger.LogInformation("Find Trips by Destination ID: {DestinationId}", destinationId);
-
+            _logger.LogInformation("Find Trips by Destination ID: {DestinationId}", destinationId);
             var trips = new List<Trip>();
-            const string query = "SELECT * FROM Trip WHERE destination_id = @destination_id";
-
+            const string query = @"SELECT t.id, t.departure_date, t.departure_time, 
+                t.available_seats - IFNULL((SELECT COUNT(*) FROM ReservedSeats rs WHERE rs.trip_id = t.id), 0) AS available_seats, 
+                d.id as destination_id, d.name as destination_name
+                FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE t.destination_id = @destination_id";
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -106,12 +92,11 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@destination_id", destinationId);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var trip = ExtractTripFromResultSet(reader);
+                            var trip = ReadTripWithDestination(reader);
                             if (trip != null)
                             {
                                 trips.Add(trip);
@@ -122,19 +107,19 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding Trips for destination ID {DestinationId}", destinationId);
+                _logger.LogError(e, "Database error while finding Trips for destination ID {DestinationId}", destinationId);
             }
-
             return trips;
         }
 
         public IEnumerable<Trip> FindByDepartureDate(DateTime departureDate)
         {
-            logger.LogInformation("Find Trips by Departure Date: {DepartureDate}", departureDate);
-
+            _logger.LogInformation("Find Trips by Departure Date: {DepartureDate}", departureDate);
             var trips = new List<Trip>();
-            const string query = "SELECT * FROM Trip WHERE departure_date = @departure_date";
-
+            const string query = @"SELECT t.id, t.departure_date, t.departure_time, 
+                t.available_seats - IFNULL((SELECT COUNT(*) FROM ReservedSeats rs WHERE rs.trip_id = t.id), 0) AS available_seats, 
+                d.id as destination_id, d.name as destination_name
+                FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE t.departure_date = @departure_date";
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -142,12 +127,11 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@departure_date", departureDate);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var trip = ExtractTripFromResultSet(reader);
+                            var trip = ReadTripWithDestination(reader);
                             if (trip != null)
                             {
                                 trips.Add(trip);
@@ -158,15 +142,14 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding Trips for departure date {DepartureDate}", departureDate);
+                _logger.LogError(e, "Database error while finding Trips for departure date {DepartureDate}", departureDate);
             }
-
             return trips;
         }
 
         public override Trip? Save(Trip trip)
         {
-            logger.LogInformation("Save Trip: {Trip}", trip);
+            _logger.LogInformation("Save Trip: {Trip}", trip);
 
             const string insertQuery = "INSERT INTO Trip (destination_id, departure_date, departure_time, available_seats) VALUES (@destination_id, @departure_date, @departure_time, @available_seats)";
             try
@@ -194,7 +177,7 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while saving Trip: {Trip}", trip);
+                _logger.LogError(e, "Database error while saving Trip: {Trip}", trip);
             }
 
             return null;
@@ -202,7 +185,7 @@ namespace persistance
 
         public override Trip? Delete(int id)
         {
-            logger.LogInformation("Delete Trip with ID: {Id}", id);
+            _logger.LogInformation("Delete Trip with ID: {Id}", id);
 
             var tripToDelete = FindById(id);
             if (tripToDelete == null)
@@ -228,7 +211,7 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while deleting Trip with ID {Id}", id);
+                _logger.LogError(e, "Database error while deleting Trip with ID {Id}", id);
             }
 
             return null;
@@ -236,7 +219,7 @@ namespace persistance
 
         public override Trip? Update(Trip trip)
         {
-            logger.LogInformation("Update Trip: {Trip}", trip);
+            _logger.LogInformation("Update Trip: {Trip}", trip);
 
             const string query = "UPDATE Trip SET destination_id = @destination_id, departure_date = @departure_date, departure_time = @departure_time, available_seats = @available_seats WHERE id = @id";
             try
@@ -260,7 +243,7 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while updating Trip: {Trip}", trip);
+                _logger.LogError(e, "Database error while updating Trip: {Trip}", trip);
             }
 
             return null;
@@ -268,10 +251,13 @@ namespace persistance
 
         public IEnumerable<Trip> FindAllByName(string name)
         {
-            logger.LogInformation("Find all Trips by name: {Name}", name);
+            _logger.LogInformation("Find all Trips by name: {Name}", name);
 
             var trips = new List<Trip>();
-            const string query = "SELECT * FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE d.name = @name";
+            const string query = @"SELECT t.id, t.departure_date, t.departure_time, 
+                t.available_seats - IFNULL((SELECT COUNT(*) FROM ReservedSeats rs WHERE rs.trip_id = t.id), 0) AS available_seats, 
+                d.id as destination_id, d.name as destination_name
+                FROM Trip t JOIN Destination d ON t.destination_id = d.id WHERE d.name = @name";
 
             try
             {
@@ -280,12 +266,11 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@name", name);
                     connection.Open();
-
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var trip = ExtractTripFromResultSet(reader);
+                            var trip = ReadTripWithDestination(reader);
                             if (trip != null)
                             {
                                 trips.Add(trip);
@@ -296,7 +281,7 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding all Trips by name {Name}", name);
+                _logger.LogError(e, "Database error while finding all Trips by name {Name}", name);
             }
 
             return trips;
@@ -304,10 +289,12 @@ namespace persistance
 
         public Trip FindByDestinationAndDateAndTime(string destination, string dateString, string timeString)
         {
-            logger.LogInformation("Find Trip by destination, date, and time: {Destination}, {Date}, {Time}", destination, dateString, timeString);
+            _logger.LogInformation("Find Trip by destination, date, and time: {Destination}, {Date}, {Time}", destination, dateString, timeString);
 
             const string query = @"
-        SELECT * FROM Trip t
+        SELECT t.id, t.departure_date, t.departure_time, t.available_seats - IFNULL((SELECT COUNT(*) FROM ReservedSeats rs WHERE rs.trip_id = t.id), 0) AS available_seats, 
+        d.id as destination_id, d.name as destination_name
+        FROM Trip t
         JOIN Destination d ON t.destination_id = d.id
         WHERE d.name = @destination AND t.departure_date = @date AND t.departure_time = @time";
 
@@ -325,7 +312,7 @@ namespace persistance
                     {
                         if (reader.Read())
                         {
-                            var trip = ExtractTripFromResultSet(reader);
+                            var trip = ReadTripWithDestination(reader);
                             if (trip != null)
                             {
                                 return trip;
@@ -336,10 +323,30 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding Trip by destination, date, and time: {Destination}, {Date}, {Time}", destination, dateString, timeString);
+                _logger.LogError(e, "Database error while finding Trip by destination, date, and time: {Destination}, {Date}, {Time}", destination, dateString, timeString);
             }
 
             return null;
+        }
+
+        private Trip? ReadTripWithDestination(SqliteDataReader reader)
+        {
+            try
+            {
+                var id = reader.GetInt32(reader.GetOrdinal("id"));
+                var destinationId = reader.GetInt32(reader.GetOrdinal("destination_id"));
+                var destinationName = reader.GetString(reader.GetOrdinal("destination_name"));
+                var departureDate = DateOnly.FromDateTime(reader.GetDateTime(reader.GetOrdinal("departure_date")));
+                var departureTime = TimeOnly.FromTimeSpan(reader.GetDateTime(reader.GetOrdinal("departure_time")).TimeOfDay);
+                var availableSeats = reader.GetInt32(reader.GetOrdinal("available_seats"));
+                var destination = new Destination(destinationId, destinationName);
+                return new Trip(id, destination, departureDate, departureTime, availableSeats);
+            }
+            catch (SqliteException e)
+            {
+                _logger.LogError(e, "Error while extracting Trip from ResultSet");
+                return null;
+            }
         }
     }
 }

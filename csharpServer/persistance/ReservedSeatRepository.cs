@@ -11,153 +11,29 @@ namespace persistance
         private readonly ITripRepository tripRepository;
         private readonly IEmployeeRepository employeeRepository;
         private readonly IClientRepository clientRepository;
+        private readonly ILogger<ReservedSeatRepository> _logger;
 
-        public ReservedSeatRepository(ITripRepository tripRepository, IEmployeeRepository employeeRepository, IClientRepository clientRepository) : base()
+        public ReservedSeatRepository(ITripRepository tripRepository, IEmployeeRepository employeeRepository, IClientRepository clientRepository, ILogger<ReservedSeatRepository> logger, JdbcUtils jdbc) : base(jdbc)
         {
             this.tripRepository = tripRepository;
             this.employeeRepository = employeeRepository;
             this.clientRepository = clientRepository;
+            _logger = logger;
         }
-
-        private ReservedSeat? ExtractReservedSeatFromResultSet(SqliteDataReader reader)
-        {
-            try
-            {
-                var id = reader.GetInt32(reader.GetOrdinal("id"));
-                var tripId = reader.GetInt32(reader.GetOrdinal("trip_id"));
-                var employeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
-                var seatNumber = reader.GetInt32(reader.GetOrdinal("seat_number"));
-                var clientId = reader.GetInt32(reader.GetOrdinal("client_id"));
-
-                var trip = tripRepository.FindById(tripId)
-                    ?? throw new InvalidOperationException($"Trip with ID {tripId} not found");
-
-                var reservedSeat = new ReservedSeat
-                {
-                    Id = id,
-                    Trip = trip,
-                    SeatNumber = seatNumber
-                };
-
-                if (employeeId != 0)
-                {
-                    var emp = employeeRepository.FindById(employeeId);
-                    if (emp != null)
-                    {
-                        reservedSeat.Employee = emp;
-                    }
-                }
-                if (clientId != 0)
-                {
-                    var client = clientRepository.FindById(clientId);
-                    if (client != null)
-                    {
-                        reservedSeat.Client = client;
-                    }
-                }
-                Console.WriteLine(reservedSeat);
-                return reservedSeat;
-            }
-            catch (SqliteException e)
-            {
-                logger.LogError(e, "Error while extracting ReservedSeat from ResultSet");
-                return null;
-            }
-        }
-
+        
         public override ReservedSeat? FindById(int id)
         {
-            logger.LogInformation("Find ReservedSeat by ID: {Id}", id);
-            const string query = "SELECT * FROM ReservedSeats WHERE id = @id";
-            try
-            {
-                using (var connection = jdbc.GetConnection())
-                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            return ExtractReservedSeatFromResultSet(reader);
-                        }
-                    }
-                }
-            }
-            catch (SqliteException e)
-            {
-                logger.LogError(e, "Database error while finding ReservedSeat with ID {Id}", id);
-            }
-            return null;
+            throw new NotSupportedException("FindById is not supported for ReservedSeatRepository.");
         }
 
         public override IEnumerable<ReservedSeat> FindAll()
         {
-            logger.LogInformation("Find all ReservedSeats");
-            var reservedSeats = new List<ReservedSeat>();
-            const string query = "SELECT * FROM ReservedSeats";
-            try
-            {
-                using (var connection = jdbc.GetConnection())
-                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
-                {
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var reservedSeat = ExtractReservedSeatFromResultSet(reader);
-                            if (reservedSeat != null)
-                            {
-                                reservedSeats.Add(reservedSeat);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (SqliteException e)
-            {
-                logger.LogError(e, "Database error while finding all ReservedSeats");
-            }
-            return reservedSeats;
+            throw new NotSupportedException("FindAll is not supported for ReservedSeatRepository.");
         }
-
-        public IEnumerable<ReservedSeat> FindByTripId(int tripId)
-        {
-            logger.LogInformation("Find ReservedSeats by Trip ID: {TripId}", tripId);
-            var reservedSeats = new List<ReservedSeat>();
-            const string query = "SELECT * FROM ReservedSeats WHERE trip_id = @trip_id";
-            try
-            {
-                using (var connection = jdbc.GetConnection())
-                using (var command = new SqliteCommand(query, (SqliteConnection)connection))
-                {
-                    command.Parameters.AddWithValue("@trip_id", tripId);
-                    connection.Open();
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var reservedSeat = ExtractReservedSeatFromResultSet(reader);
-                            if (reservedSeat != null)
-                            {
-                                reservedSeats.Add(reservedSeat);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (SqliteException e)
-            {
-                logger.LogError(e, "Database error while finding ReservedSeats for trip ID {TripId}", tripId);
-            }
-            return reservedSeats;
-        }
-
+        
         public override ReservedSeat? Save(ReservedSeat reservedSeat)
         {
-            logger.LogInformation("Save ReservedSeat: {ReservedSeat}", reservedSeat);
+            _logger.LogInformation("Save ReservedSeat: {ReservedSeat}", reservedSeat);
             const string query = "INSERT INTO ReservedSeats (trip_id, employee_id, seat_number, client_id) VALUES (@trip_id, @employee_id, @seat_number, @client_id)";
             try
             {
@@ -182,20 +58,19 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while saving ReservedSeat: {ReservedSeat}", reservedSeat);
+                _logger.LogError(e, "Database error while saving ReservedSeat: {ReservedSeat}", reservedSeat);
             }
             return null;
         }
 
         public override ReservedSeat? Delete(int id)
         {
-            logger.LogInformation("Delete ReservedSeat with ID: {Id}", id);
-            var reservedSeatToDelete = FindById(id);
-            if (reservedSeatToDelete == null)
-            {
-                return null;
-            }
-            const string query = "DELETE FROM ReservedSeats WHERE id = @id";
+            _logger.LogInformation("Delete ReservedSeat with ID: {Id}", id);
+            const string query = @"DELETE FROM ReservedSeats WHERE id = @id RETURNING id, seat_number, 
+               trip_id, departure_date, departure_time, available_seats, 
+               destination_id, destination_name,
+               employee_id, employee_username, employee_password,
+               client_id, client_name";
             try
             {
                 using (var connection = jdbc.GetConnection())
@@ -203,23 +78,25 @@ namespace persistance
                 {
                     command.Parameters.AddWithValue("@id", id);
                     connection.Open();
-                    var affectedRows = command.ExecuteNonQuery();
-                    if (affectedRows > 0)
+                    using (var reader = command.ExecuteReader())
                     {
-                        return reservedSeatToDelete;
+                        if (reader.Read())
+                        {
+                            return ReadReservedSeatWithAll(reader);
+                        }
                     }
                 }
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while deleting ReservedSeat with ID {Id}", id);
+                _logger.LogError(e, "Database error while deleting ReservedSeat with ID {Id}", id);
             }
             return null;
         }
 
         public override ReservedSeat? Update(ReservedSeat reservedSeat)
         {
-            logger.LogInformation("Update ReservedSeat: {ReservedSeat}", reservedSeat);
+            _logger.LogInformation("Update ReservedSeat: {ReservedSeat}", reservedSeat);
             const string query = "UPDATE ReservedSeats SET trip_id = @trip_id, employee_id = @employee_id, seat_number = @seat_number, client_id = @client_id WHERE id = @id";
             try
             {
@@ -241,19 +118,26 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while updating ReservedSeat: {ReservedSeat}", reservedSeat);
+                _logger.LogError(e, "Database error while updating ReservedSeat: {ReservedSeat}", reservedSeat);
             }
             return null;
         }
 
         public List<ReservedSeat> FindByTripDestinationDateTime(string destination, string date, string time)
         {
-            logger.LogInformation("Find ReservedSeat by trip destination, date and time: {Destination}: {Date}, {Time}", destination, date, time);
+            _logger.LogInformation("Find ReservedSeat by trip destination, date and time: {Destination}: {Date}, {Time}", destination, date, time);
             var reservedSeats = new List<ReservedSeat>();
             const string query = @"
-        SELECT * FROM ReservedSeats rs
+        SELECT rs.id, rs.seat_number, 
+               t.id as trip_id, t.departure_date, t.departure_time, t.available_seats, 
+               d.id as destination_id, d.name as destination_name,
+               e.id as employee_id, e.username as employee_name, e.username as employee_username, e.password as employee_password,
+               c.id as client_id, c.name as client_name
+        FROM ReservedSeats rs
         JOIN Trip t ON rs.trip_id = t.id
         JOIN Destination d ON t.destination_id = d.id
+        LEFT JOIN Employee e ON rs.employee_id = e.id
+        LEFT JOIN Client c ON rs.client_id = c.id
         WHERE d.name = @destination AND t.departure_date = @date AND t.departure_time = @time";
             try
             {
@@ -268,7 +152,7 @@ namespace persistance
                     {
                         while (reader.Read())
                         {
-                            var reservedSeat = ExtractReservedSeatFromResultSet(reader);
+                            var reservedSeat = ReadReservedSeatWithAll(reader);
                             if (reservedSeat != null)
                             {
                                 reservedSeats.Add(reservedSeat);
@@ -279,9 +163,57 @@ namespace persistance
             }
             catch (SqliteException e)
             {
-                logger.LogError(e, "Database error while finding ReservedSeat by trip destination, date and time: {Destination}: {Date}, {Time}", destination, date, time);
+                _logger.LogError(e, "Database error while finding ReservedSeat by trip destination, date and time: {Destination}: {Date}, {Time}", destination, date, time);
             }
             return reservedSeats;
+        }
+
+        private ReservedSeat? ReadReservedSeatWithAll(SqliteDataReader reader)
+        {
+            try
+            {
+                var id = reader.GetInt32(reader.GetOrdinal("id"));
+                var seatNumber = reader.GetInt32(reader.GetOrdinal("seat_number"));
+                var tripId = reader.GetInt32(reader.GetOrdinal("trip_id"));
+                var departureDate = DateOnly.FromDateTime(reader.GetDateTime(reader.GetOrdinal("departure_date")));
+                var departureTime = TimeOnly.FromTimeSpan(reader.GetDateTime(reader.GetOrdinal("departure_time")).TimeOfDay);
+                var availableSeats = reader.GetInt32(reader.GetOrdinal("available_seats"));
+                var destinationId = reader.GetInt32(reader.GetOrdinal("destination_id"));
+                var destinationName = reader.GetString(reader.GetOrdinal("destination_name"));
+                var destination = new Destination(destinationId, destinationName);
+                var trip = new Trip(tripId, destination, departureDate, departureTime, availableSeats);
+                Employee? employee = null;
+                if (!reader.IsDBNull(reader.GetOrdinal("employee_id")))
+                {
+                    var employeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
+                    var employeeUsername = reader.IsDBNull(reader.GetOrdinal("employee_username")) ? null : reader.GetString(reader.GetOrdinal("employee_username"));
+                    var employeePassword = reader.IsDBNull(reader.GetOrdinal("employee_password")) ? null : reader.GetString(reader.GetOrdinal("employee_password"));
+                    // Office is not included in the join, so pass null for now
+                    if (employeeUsername != null && employeePassword != null)
+                        employee = new Employee(employeeId, employeeUsername, employeePassword, null);
+                }
+                Client? client = null;
+                if (!reader.IsDBNull(reader.GetOrdinal("client_id")))
+                {
+                    var clientId = reader.GetInt32(reader.GetOrdinal("client_id"));
+                    var clientName = reader.IsDBNull(reader.GetOrdinal("client_name")) ? null : reader.GetString(reader.GetOrdinal("client_name"));
+                    if (clientName != null)
+                        client = new Client(clientId, clientName);
+                }
+                return new ReservedSeat
+                {
+                    Id = id,
+                    Trip = trip,
+                    Employee = employee,
+                    Client = client,
+                    SeatNumber = seatNumber
+                };
+            }
+            catch (SqliteException e)
+            {
+                _logger.LogError(e, "Error while extracting ReservedSeat from ResultSet");
+                return null;
+            }
         }
     }
 }

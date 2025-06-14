@@ -10,10 +10,9 @@ public abstract class AbstractRepository<ID, E> : IRepository<ID, E> where ID : 
     protected JdbcUtils jdbc;
     protected static readonly ILogger logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<AbstractRepository<ID, E>>();
 
-    protected AbstractRepository()
+    protected AbstractRepository(JdbcUtils jdbc)
     {
-        // Initialize JdbcUtils with configuration from appsettings.json
-        jdbc = new JdbcUtils();
+        this.jdbc = jdbc;
     }
 
     public abstract E? FindById(ID id);

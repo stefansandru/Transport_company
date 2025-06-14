@@ -386,3 +386,13 @@
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/obj/Debug/net9.0/grpcServer.pdb
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/obj/Debug/net9.0/grpcServer.genruntimeconfig.cache
 /Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/obj/Debug/net9.0/ref/grpcServer.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.AspNetCore.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Extensions.Hosting.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Extensions.Logging.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Formatting.Compact.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Settings.Configuration.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Sinks.Console.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Sinks.Debug.dll
+/Users/stefansandru/Documents/trnsport-company/csharpServer/grpcServer/bin/Debug/net9.0/Serilog.Sinks.File.dll

@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class JdbcUtils {
 
-    private Properties jdbcProps;
+    private final Properties jdbcProps;
 
     private static final Logger logger= LogManager.getLogger();
 
@@ -28,8 +28,6 @@ public class JdbcUtils {
         String user=jdbcProps.getProperty("jdbc.user");
         String pass=jdbcProps.getProperty("jdbc.pass");
         logger.info("trying to connect to database ... {}",url);
-//        logger.info("user: {}",user);
-//        logger.info("pass: {}", pass);
         Connection con=null;
         try {
 

@@ -8,9 +8,9 @@ namespace persistance;
 
 public class DestinationRepository : AbstractRepository<int, Destination>, IDestinationRepository
 {
-    public DestinationRepository() : base()
+    public DestinationRepository(JdbcUtils jdbc) : base(jdbc)
     {
-        // Constructor specific for DestinationRepository, if needed
+        // Constructor specific pentru DestinationRepository, dacă este nevoie
     }
 
     public override Destination? FindById(int id)

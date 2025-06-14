@@ -8,9 +8,9 @@ namespace persistance;
 
 public class OfficeRepository : AbstractRepository<int, Office>, IOfficeRepository
 {
-    public OfficeRepository() : base()
+    public OfficeRepository(JdbcUtils jdbc) : base(jdbc)
     {
-        // Constructor specific for OfficeRepository, if needed
+        // Constructor specific pentru OfficeRepository, dacă este nevoie
     }
 
     public override Office? FindById(int id)

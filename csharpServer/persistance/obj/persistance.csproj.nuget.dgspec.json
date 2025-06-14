@@ -95,6 +95,14 @@
               "target": "Package",
               "version": "[6.0.0-preview1, )"
             },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "log4net": {
               "target": "Package",
               "version": "[3.1.0-preview.3, )"
@@ -214,6 +222,14 @@
             "NLog": {
               "target": "Package",
               "version": "[6.0.0-preview1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "log4net": {
               "target": "Package",

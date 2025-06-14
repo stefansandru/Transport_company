@@ -69,6 +69,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.72.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -181,6 +189,14 @@
             "NLog": {
               "target": "Package",
               "version": "[6.0.0-preview1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "log4net": {
               "target": "Package",
@@ -301,6 +317,14 @@
             "NLog": {
               "target": "Package",
               "version": "[6.0.0-preview1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "log4net": {
               "target": "Package",
