@@ -45,7 +45,6 @@ public class Employee extends Entity<Integer> {
         return "Employee{" +
                 "id=" + getId() +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", office=" + office +
                 '}';
     }
