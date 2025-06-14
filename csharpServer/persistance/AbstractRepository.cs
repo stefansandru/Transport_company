@@ -7,10 +7,10 @@ namespace persistance;
 
 public abstract class AbstractRepository<ID, E> : IRepository<ID, E> where ID : IComparable<ID> where E : Entity<ID>
 {
-    protected JdbcUtils jdbc;
+    protected DatabaseConnection jdbc;
     protected static readonly ILogger logger = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<AbstractRepository<ID, E>>();
 
-    protected AbstractRepository(JdbcUtils jdbc)
+    protected AbstractRepository(DatabaseConnection jdbc)
     {
         this.jdbc = jdbc;
     }

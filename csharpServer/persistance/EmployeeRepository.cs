@@ -10,7 +10,7 @@ public class EmployeeRepository : AbstractRepository<int, Employee>, IEmployeeRe
 {
     private readonly IOfficeRepository officeRepository;
 
-    public EmployeeRepository(IOfficeRepository officeRepository, JdbcUtils jdbc) : base(jdbc)
+    public EmployeeRepository(IOfficeRepository officeRepository, DatabaseConnection jdbc) : base(jdbc)
     {
         this.officeRepository = officeRepository;
     }
@@ -116,7 +116,6 @@ public class EmployeeRepository : AbstractRepository<int, Employee>, IEmployeeRe
                     command.ExecuteNonQuery();
                 }
 
-                // Get the last inserted ID using SQLite's last_insert_rowid()
                 using (var idCommand = new SqliteCommand("SELECT last_insert_rowid()", (SqliteConnection)connection))
                 {
                     var id = Convert.ToInt32(idCommand.ExecuteScalar());

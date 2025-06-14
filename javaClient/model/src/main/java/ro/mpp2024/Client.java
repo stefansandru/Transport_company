@@ -3,7 +3,6 @@ package ro.mpp2024;
 public class Client extends Entity<Integer> {
     private String name;
 
-    // Constructors
     public Client() {
         super();
     }
@@ -12,7 +11,7 @@ public class Client extends Entity<Integer> {
         super(id);
         this.name = name;
     }
-    // Getters and setters
+
     public String getName() {
         return name;
     }

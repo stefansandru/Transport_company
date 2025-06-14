@@ -3,7 +3,6 @@ package ro.mpp2024;
 public class Office extends Entity<Integer> {
     private String name;
 
-    // Constructors
     public Office() {
         super();
     }
@@ -13,7 +12,6 @@ public class Office extends Entity<Integer> {
         this.name = name;
     }
 
-    // Getters and setters
     public String getName() {
         return name;
     }

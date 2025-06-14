@@ -91,27 +91,5 @@ public class StartJsonFXClient extends Application {
 
     public static void main(String[] args) throws ServicesException {
         launch(args);
-//        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 5000)
-//                .usePlaintext()
-//                .build();
-//
-//        TransportCompanyGrpc.TransportCompanyBlockingStub stub =
-//                TransportCompanyGrpc.newBlockingStub(channel);
-//
-//        LoginRequest request = LoginRequest.newBuilder()
-//                .setUsername("ana")
-//                .setPassword("ana")
-//                .build();
-//
-//        LoginReply reply = stub.login(request);
-//
-//        if (reply.getEmployeeId() > 0) {
-//            System.out.println("Login reușit! Id: " + reply.getEmployeeId());
-//        } else {
-//            System.out.println("Login eșuat!");
-//        }
-//
-//        channel.shutdown();
-
     }
 }

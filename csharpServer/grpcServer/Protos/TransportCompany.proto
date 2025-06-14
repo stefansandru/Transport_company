@@ -45,13 +45,13 @@ message SearchTripSeatsRequest {
   string time = 3;
 }
 
-message SeatDTODTO {
+message SeatDTO {
   int32 seatNumber = 1;
   string clientName = 2;
 }
 
 message SearchTripSeatsReply {
-  repeated SeatDTODTO seats = 1;
+  repeated SeatDTO seats = 1;
 }
 
 message ReserveSeatsRequest {

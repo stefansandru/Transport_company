@@ -6,17 +6,16 @@ using Microsoft.Extensions.Logging;
 
 namespace persistance;
 
-public class JdbcUtils
+public class DatabaseConnection
 {
     private readonly string connectionString;
-    private readonly ILogger<JdbcUtils> _logger;
+    private readonly ILogger<DatabaseConnection> _logger;
     private IDbConnection instance = null;
 
-    public JdbcUtils(ILogger<JdbcUtils> logger)
+    public DatabaseConnection(ILogger<DatabaseConnection> logger)
     {
         _logger = logger;
 
-        // Load database configuration from appsettings.json
         var configuration = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json")

@@ -33,7 +33,6 @@ protobuf {
 dependencies {
     implementation project(':model')
     implementation project(':services')
-//    implementation project(':server')
 
 
     implementation 'io.grpc:grpc-netty-shaded:1.63.0'

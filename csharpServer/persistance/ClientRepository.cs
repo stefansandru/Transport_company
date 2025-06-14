@@ -11,7 +11,7 @@ public class ClientRepository : AbstractRepository<int, Client>, IClientReposito
 {
     private readonly ILogger<ClientRepository> _logger;
 
-    public ClientRepository(JdbcUtils jdbc, ILogger<ClientRepository> logger) : base(jdbc)
+    public ClientRepository(DatabaseConnection jdbc, ILogger<ClientRepository> logger) : base(jdbc)
     {
         _logger = logger;
     }

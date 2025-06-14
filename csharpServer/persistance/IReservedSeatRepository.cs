@@ -6,4 +6,5 @@ namespace persistance;
 public interface IReservedSeatRepository : IRepository<int, ReservedSeat>
 {
     List<ReservedSeat> FindByTripDestinationDateTime(string destination, string dateString, string timeString);
+    bool AreSeatsAvailable(int tripId, IEnumerable<int> seatNumbers);
 }

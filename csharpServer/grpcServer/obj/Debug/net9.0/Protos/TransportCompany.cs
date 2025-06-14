@@ -32,29 +32,29 @@ namespace TransportCompany.GrpcServer {
             "CRIWCg5hdmFpbGFibGVTZWF0cxgFIAEoBSIlCgpUcmlwc1JlcGx5EhcKBXRy",
             "aXBzGAEgAygLMgguVHJpcERUTyJJChZTZWFyY2hUcmlwU2VhdHNSZXF1ZXN0",
             "EhMKC2Rlc3RpbmF0aW9uGAEgASgJEgwKBGRhdGUYAiABKAkSDAoEdGltZRgD",
-            "IAEoCSI0CgpTZWF0RFRPRFRPEhIKCnNlYXROdW1iZXIYASABKAUSEgoKY2xp",
-            "ZW50TmFtZRgCIAEoCSIyChRTZWFyY2hUcmlwU2VhdHNSZXBseRIaCgVzZWF0",
-            "cxgBIAMoCzILLlNlYXREVE9EVE8iagoTUmVzZXJ2ZVNlYXRzUmVxdWVzdBIS",
-            "CgpjbGllbnROYW1lGAEgASgJEhMKC3NlYXROdW1iZXJzGAIgAygFEhYKBHRy",
-            "aXAYAyABKAsyCC5UcmlwRFRPEhIKCmVtcGxveWVlSWQYBCABKAUiNQoRUmVz",
-            "ZXJ2ZVNlYXRzUmVwbHkSDwoHc3VjY2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIg",
-            "ASgJIjAKGk5vdGlmeVNlYXRzUmVzZXJ2ZWRSZXF1ZXN0EhIKCmVtcGxveWVl",
-            "SWQYASABKAUiGgoYTm90aWZ5U2VhdHNSZXNlcnZlZFJlcGx5IkEKDkdldFRy",
-            "aXBSZXF1ZXN0EhMKC2Rlc3RpbmF0aW9uGAEgASgJEgwKBGRhdGUYAiABKAkS",
-            "DAoEdGltZRgDIAEoCSImCgxHZXRUcmlwUmVwbHkSFgoEdHJpcBgBIAEoCzII",
-            "LlRyaXBEVE8iIwoNTG9nb3V0UmVxdWVzdBISCgplbXBsb3llZUlkGAEgASgF",
-            "Ii8KC0xvZ291dFJlcGx5Eg8KB3N1Y2Nlc3MYASABKAgSDwoHbWVzc2FnZRgC",
-            "IAEoCTKGAwoQVHJhbnNwb3J0Q29tcGFueRIjCgVMb2dpbhINLkxvZ2luUmVx",
-            "dWVzdBoLLkxvZ2luUmVwbHkSLAoLR2V0QWxsVHJpcHMSEC5BbGxUcmlwc1Jl",
-            "cXVlc3QaCy5Ucmlwc1JlcGx5EkEKD1NlYXJjaFRyaXBTZWF0cxIXLlNlYXJj",
-            "aFRyaXBTZWF0c1JlcXVlc3QaFS5TZWFyY2hUcmlwU2VhdHNSZXBseRI4CgxS",
-            "ZXNlcnZlU2VhdHMSFC5SZXNlcnZlU2VhdHNSZXF1ZXN0GhIuUmVzZXJ2ZVNl",
-            "YXRzUmVwbHkSTwoTTm90aWZ5U2VhdHNSZXNlcnZlZBIbLk5vdGlmeVNlYXRz",
-            "UmVzZXJ2ZWRSZXF1ZXN0GhkuTm90aWZ5U2VhdHNSZXNlcnZlZFJlcGx5MAES",
-            "KQoHR2V0VHJpcBIPLkdldFRyaXBSZXF1ZXN0Gg0uR2V0VHJpcFJlcGx5EiYK",
-            "BkxvZ291dBIOLkxvZ291dFJlcXVlc3QaDC5Mb2dvdXRSZXBseUIyChByby5t",
-            "cHAyMDI0LnByb3RvUAGqAhtUcmFuc3BvcnRDb21wYW55LkdycGNTZXJ2ZXJi",
-            "BnByb3RvMw=="));
+            "IAEoCSIxCgdTZWF0RFRPEhIKCnNlYXROdW1iZXIYASABKAUSEgoKY2xpZW50",
+            "TmFtZRgCIAEoCSIvChRTZWFyY2hUcmlwU2VhdHNSZXBseRIXCgVzZWF0cxgB",
+            "IAMoCzIILlNlYXREVE8iagoTUmVzZXJ2ZVNlYXRzUmVxdWVzdBISCgpjbGll",
+            "bnROYW1lGAEgASgJEhMKC3NlYXROdW1iZXJzGAIgAygFEhYKBHRyaXAYAyAB",
+            "KAsyCC5UcmlwRFRPEhIKCmVtcGxveWVlSWQYBCABKAUiNQoRUmVzZXJ2ZVNl",
+            "YXRzUmVwbHkSDwoHc3VjY2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJIjAK",
+            "Gk5vdGlmeVNlYXRzUmVzZXJ2ZWRSZXF1ZXN0EhIKCmVtcGxveWVlSWQYASAB",
+            "KAUiGgoYTm90aWZ5U2VhdHNSZXNlcnZlZFJlcGx5IkEKDkdldFRyaXBSZXF1",
+            "ZXN0EhMKC2Rlc3RpbmF0aW9uGAEgASgJEgwKBGRhdGUYAiABKAkSDAoEdGlt",
+            "ZRgDIAEoCSImCgxHZXRUcmlwUmVwbHkSFgoEdHJpcBgBIAEoCzIILlRyaXBE",
+            "VE8iIwoNTG9nb3V0UmVxdWVzdBISCgplbXBsb3llZUlkGAEgASgFIi8KC0xv",
+            "Z291dFJlcGx5Eg8KB3N1Y2Nlc3MYASABKAgSDwoHbWVzc2FnZRgCIAEoCTKG",
+            "AwoQVHJhbnNwb3J0Q29tcGFueRIjCgVMb2dpbhINLkxvZ2luUmVxdWVzdBoL",
+            "LkxvZ2luUmVwbHkSLAoLR2V0QWxsVHJpcHMSEC5BbGxUcmlwc1JlcXVlc3Qa",
+            "Cy5Ucmlwc1JlcGx5EkEKD1NlYXJjaFRyaXBTZWF0cxIXLlNlYXJjaFRyaXBT",
+            "ZWF0c1JlcXVlc3QaFS5TZWFyY2hUcmlwU2VhdHNSZXBseRI4CgxSZXNlcnZl",
+            "U2VhdHMSFC5SZXNlcnZlU2VhdHNSZXF1ZXN0GhIuUmVzZXJ2ZVNlYXRzUmVw",
+            "bHkSTwoTTm90aWZ5U2VhdHNSZXNlcnZlZBIbLk5vdGlmeVNlYXRzUmVzZXJ2",
+            "ZWRSZXF1ZXN0GhkuTm90aWZ5U2VhdHNSZXNlcnZlZFJlcGx5MAESKQoHR2V0",
+            "VHJpcBIPLkdldFRyaXBSZXF1ZXN0Gg0uR2V0VHJpcFJlcGx5EiYKBkxvZ291",
+            "dBIOLkxvZ291dFJlcXVlc3QaDC5Mb2dvdXRSZXBseUIyChByby5tcHAyMDI0",
+            "LnByb3RvUAGqAhtUcmFuc3BvcnRDb21wYW55LkdycGNTZXJ2ZXJiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -64,7 +64,7 @@ namespace TransportCompany.GrpcServer {
             new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.TripDTO), global::TransportCompany.GrpcServer.TripDTO.Parser, new[]{ "Id", "Destination", "Date", "Time", "AvailableSeats" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.TripsReply), global::TransportCompany.GrpcServer.TripsReply.Parser, new[]{ "Trips" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.SearchTripSeatsRequest), global::TransportCompany.GrpcServer.SearchTripSeatsRequest.Parser, new[]{ "Destination", "Date", "Time" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.SeatDTODTO), global::TransportCompany.GrpcServer.SeatDTODTO.Parser, new[]{ "SeatNumber", "ClientName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.SeatDTO), global::TransportCompany.GrpcServer.SeatDTO.Parser, new[]{ "SeatNumber", "ClientName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.SearchTripSeatsReply), global::TransportCompany.GrpcServer.SearchTripSeatsReply.Parser, new[]{ "Seats" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.ReserveSeatsRequest), global::TransportCompany.GrpcServer.ReserveSeatsRequest.Parser, new[]{ "ClientName", "SeatNumbers", "Trip", "EmployeeId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TransportCompany.GrpcServer.ReserveSeatsReply), global::TransportCompany.GrpcServer.ReserveSeatsReply.Parser, new[]{ "Success", "Message" }, null, null, null, null),
@@ -1517,16 +1517,16 @@ namespace TransportCompany.GrpcServer {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class SeatDTODTO : pb::IMessage<SeatDTODTO>
+  public sealed partial class SeatDTO : pb::IMessage<SeatDTO>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<SeatDTODTO> _parser = new pb::MessageParser<SeatDTODTO>(() => new SeatDTODTO());
+    private static readonly pb::MessageParser<SeatDTO> _parser = new pb::MessageParser<SeatDTO>(() => new SeatDTO());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<SeatDTODTO> Parser { get { return _parser; } }
+    public static pb::MessageParser<SeatDTO> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1542,7 +1542,7 @@ namespace TransportCompany.GrpcServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SeatDTODTO() {
+    public SeatDTO() {
       OnConstruction();
     }
 
@@ -1550,7 +1550,7 @@ namespace TransportCompany.GrpcServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SeatDTODTO(SeatDTODTO other) : this() {
+    public SeatDTO(SeatDTO other) : this() {
       seatNumber_ = other.seatNumber_;
       clientName_ = other.clientName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1558,8 +1558,8 @@ namespace TransportCompany.GrpcServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SeatDTODTO Clone() {
-      return new SeatDTODTO(this);
+    public SeatDTO Clone() {
+      return new SeatDTO(this);
     }
 
     /// <summary>Field number for the "seatNumber" field.</summary>
@@ -1589,12 +1589,12 @@ namespace TransportCompany.GrpcServer {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as SeatDTODTO);
+      return Equals(other as SeatDTO);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(SeatDTODTO other) {
+    public bool Equals(SeatDTO other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1680,7 +1680,7 @@ namespace TransportCompany.GrpcServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(SeatDTODTO other) {
+    public void MergeFrom(SeatDTO other) {
       if (other == null) {
         return;
       }
@@ -1798,12 +1798,12 @@ namespace TransportCompany.GrpcServer {
 
     /// <summary>Field number for the "seats" field.</summary>
     public const int SeatsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::TransportCompany.GrpcServer.SeatDTODTO> _repeated_seats_codec
-        = pb::FieldCodec.ForMessage(10, global::TransportCompany.GrpcServer.SeatDTODTO.Parser);
-    private readonly pbc::RepeatedField<global::TransportCompany.GrpcServer.SeatDTODTO> seats_ = new pbc::RepeatedField<global::TransportCompany.GrpcServer.SeatDTODTO>();
+    private static readonly pb::FieldCodec<global::TransportCompany.GrpcServer.SeatDTO> _repeated_seats_codec
+        = pb::FieldCodec.ForMessage(10, global::TransportCompany.GrpcServer.SeatDTO.Parser);
+    private readonly pbc::RepeatedField<global::TransportCompany.GrpcServer.SeatDTO> seats_ = new pbc::RepeatedField<global::TransportCompany.GrpcServer.SeatDTO>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::TransportCompany.GrpcServer.SeatDTODTO> Seats {
+    public pbc::RepeatedField<global::TransportCompany.GrpcServer.SeatDTO> Seats {
       get { return seats_; }
     }
 

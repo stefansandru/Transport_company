@@ -76,7 +76,6 @@ public class MainAppController implements Initializable, IObserver {
         initTripsTable();
         initSeatsTable();
 
-        // Adaugă listener pentru selecția din tabelul de tripuri
         tripsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldTrip, selectedTrip) -> {
             if (selectedTrip != null) {
                 searchDestinationField.setText(selectedTrip.getDestination().getName());
@@ -117,14 +116,14 @@ public class MainAppController implements Initializable, IObserver {
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
         seatsColumn.setCellValueFactory(new PropertyValueFactory<>("availableSeats"));
 
-        tripsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        tripsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
     }
 
     private void initSeatsTable() {
         seatNumberColumn.setCellValueFactory(new PropertyValueFactory<>("seatNumber"));
         clientNameColumn.setCellValueFactory(new PropertyValueFactory<>("clientName"));
 
-        seatsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        seatsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
     }
 
     @FXML

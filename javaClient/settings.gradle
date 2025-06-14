@@ -1,7 +1,5 @@
 rootProject.name = 'firma-de-transport-java'
 
 include 'model'
-include 'repository'
-include 'persistance'
 include 'services'
 include 'fxClient'

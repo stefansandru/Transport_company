@@ -34,8 +34,15 @@ public class GrpcServicesProxy implements IServices {
                                                      .setPassword(password)
                                                      .build());
 
-        if (reply.getEmployeeId() < 0)
+        if (reply.getEmployeeId() == -1) {
+            throw new ServicesException("Incorrect username");
+        } else if (reply.getEmployeeId() == -2) {
+            throw new ServicesException("Incorrect password");
+        } else if (reply.getEmployeeId() == -3) {
+            throw new ServicesException("User already logged in");
+        } else if (reply.getEmployeeId() < 0) {
             throw new ServicesException("Login failed");
+        }
 
         subscribeToUpdates(reply.getEmployeeId(), client);   // o singură dată
 
@@ -108,7 +115,7 @@ public class GrpcServicesProxy implements IServices {
                                            .build());
 
             List<Seat> seats = new ArrayList<>();
-            for (SeatDTODTO dto : response.getSeatsList()) {
+            for (SeatDTO dto : response.getSeatsList()) {
                 seats.add(new Seat(dto.getSeatNumber(), dto.getClientName()));
             }
             return seats;
@@ -131,6 +138,10 @@ public class GrpcServicesProxy implements IServices {
 
             if (!reply.getSuccess())
                 throw new ServicesException("Reservation failed: " + reply.getMessage());
+        } catch (io.grpc.StatusRuntimeException e) {
+            String detail = e.getStatus().getDescription();
+            if (detail == null || detail.isEmpty()) detail = e.getMessage();
+            throw new ServicesException(detail, e);
         } catch (Exception e) {
             throw new ServicesException("Error reserving seats: " + e.getMessage(), e);
         }
@@ -146,20 +157,20 @@ public class GrpcServicesProxy implements IServices {
                 .setEmployeeId(employeeId)
                 .build();
 
-        // Cream obiectul și îl salvăm
+        // Create the stream observer and save it
         notifyStream = new StreamObserver<NotifySeatsReservedReply>() {
             @Override
             public void onNext(NotifySeatsReservedReply value) {
                 try {
                     observer.seatsReserved();
                 } catch (ServicesException e) {
-                    // todo: log
+                    // Log error if needed
                 }
             }
-            @Override public void onError(Throwable t)  { /* todo: log */ }
+            @Override public void onError(Throwable t)  { /* Log error if needed */ }
             @Override public void onCompleted()         { }
         };
 
-        // trimitem cererea; metoda este void
+        // Send the request; method is void
         asyncStub.notifySeatsReserved(request, notifyStream);
     }}

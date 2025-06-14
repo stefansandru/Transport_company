@@ -13,7 +13,7 @@ namespace persistance
         private readonly IClientRepository clientRepository;
         private readonly ILogger<ReservedSeatRepository> _logger;
 
-        public ReservedSeatRepository(ITripRepository tripRepository, IEmployeeRepository employeeRepository, IClientRepository clientRepository, ILogger<ReservedSeatRepository> logger, JdbcUtils jdbc) : base(jdbc)
+        public ReservedSeatRepository(ITripRepository tripRepository, IEmployeeRepository employeeRepository, IClientRepository clientRepository, ILogger<ReservedSeatRepository> logger, DatabaseConnection jdbc) : base(jdbc)
         {
             this.tripRepository = tripRepository;
             this.employeeRepository = employeeRepository;
@@ -168,6 +168,29 @@ namespace persistance
             return reservedSeats;
         }
 
+        public bool AreSeatsAvailable(int tripId, IEnumerable<int> seatNumbers)
+        {
+            const string query = "SELECT seat_number FROM ReservedSeats WHERE trip_id = @trip_id AND seat_number IN ({0})";
+            var seatNumberList = seatNumbers.ToList();
+            if (!seatNumberList.Any()) return true;
+            var inClause = string.Join(",", seatNumberList.Select((s, i) => "@seat" + i));
+            var finalQuery = string.Format(query, inClause);
+            using (var connection = jdbc.GetConnection())
+            using (var command = new SqliteCommand(finalQuery, (SqliteConnection)connection))
+            {
+                command.Parameters.AddWithValue("@trip_id", tripId);
+                for (int i = 0; i < seatNumberList.Count; i++)
+                {
+                    command.Parameters.AddWithValue("@seat" + i, seatNumberList[i]);
+                }
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    return !reader.Read(); // If any row is returned, seats are not available
+                }
+            }
+        }
+
         private ReservedSeat? ReadReservedSeatWithAll(SqliteDataReader reader)
         {
             try
@@ -188,7 +211,6 @@ namespace persistance
                     var employeeId = reader.GetInt32(reader.GetOrdinal("employee_id"));
                     var employeeUsername = reader.IsDBNull(reader.GetOrdinal("employee_username")) ? null : reader.GetString(reader.GetOrdinal("employee_username"));
                     var employeePassword = reader.IsDBNull(reader.GetOrdinal("employee_password")) ? null : reader.GetString(reader.GetOrdinal("employee_password"));
-                    // Office is not included in the join, so pass null for now
                     if (employeeUsername != null && employeePassword != null)
                         employee = new Employee(employeeId, employeeUsername, employeePassword, null);
                 }

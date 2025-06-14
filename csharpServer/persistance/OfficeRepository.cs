@@ -8,9 +8,8 @@ namespace persistance;
 
 public class OfficeRepository : AbstractRepository<int, Office>, IOfficeRepository
 {
-    public OfficeRepository(JdbcUtils jdbc) : base(jdbc)
+    public OfficeRepository(DatabaseConnection jdbc) : base(jdbc)
     {
-        // Constructor specific pentru OfficeRepository, dacă este nevoie
     }
 
     public override Office? FindById(int id)
@@ -97,7 +96,6 @@ public class OfficeRepository : AbstractRepository<int, Office>, IOfficeReposito
                     command.ExecuteNonQuery();
                 }
 
-                // Get the last inserted ID using SQLite's last_insert_rowid()
                 using (var idCommand = new SqliteCommand("SELECT last_insert_rowid()", (SqliteConnection)connection))
                 {
                     var id = Convert.ToInt32(idCommand.ExecuteScalar());

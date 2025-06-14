@@ -10,7 +10,6 @@ public class Trip extends Entity<Integer> {
     private LocalTime departureTime;
     private Integer availableSeats;
 
-    // Constructors
     public Trip() {
         super();
     }
@@ -28,7 +27,6 @@ public class Trip extends Entity<Integer> {
         this.availableSeats = availableSeats;
     }
 
-    // Getters and setters
     public Destination getDestination() {
         return destination;
     }

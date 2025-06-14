@@ -5,7 +5,6 @@ public class Employee extends Entity<Integer> {
     private String password;
     private Office office;
 
-    // Constructors
     public Employee() {
         super();
     }
@@ -17,7 +16,6 @@ public class Employee extends Entity<Integer> {
         this.office = office;
     }
 
-    // Getters and setters
     public String getUsername() {
         return username;
     }

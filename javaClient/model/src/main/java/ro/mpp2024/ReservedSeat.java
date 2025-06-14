@@ -6,7 +6,6 @@ public class ReservedSeat extends Entity<Integer> {
     private Integer seatNumber;
     private Client client;
 
-    // Constructors
     public ReservedSeat() {
         super();
     }
@@ -24,7 +23,6 @@ public class ReservedSeat extends Entity<Integer> {
         this.client = client;
     }
 
-    // Getters and setters
     public Trip getTrip() {
         return trip;
     }

@@ -25,7 +25,7 @@ builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddSingleton<IDestinationRepository, DestinationRepository>();
 builder.Services.AddSingleton<ITripRepository, TripRepository>();
 builder.Services.AddSingleton<IReservedSeatRepository, ReservedSeatRepository>();
-builder.Services.AddSingleton<JdbcUtils>();
+builder.Services.AddSingleton<DatabaseConnection>();
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)

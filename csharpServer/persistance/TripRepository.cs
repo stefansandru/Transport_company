@@ -7,7 +7,7 @@ namespace persistance
     public class TripRepository : AbstractRepository<int, Trip>, ITripRepository
     {
         private readonly ILogger<TripRepository> _logger;
-        public TripRepository(ILogger<TripRepository> logger, JdbcUtils jdbc) : base(jdbc)
+        public TripRepository(ILogger<TripRepository> logger, DatabaseConnection jdbc) : base(jdbc)
         {
             _logger = logger;
         }
@@ -166,7 +166,6 @@ namespace persistance
                         command.ExecuteNonQuery();
                     }
 
-                    // Get the last inserted ID using SQLite's last_insert_rowid()
                     using (var idCommand = new SqliteCommand("SELECT last_insert_rowid()", (SqliteConnection)connection))
                     {
                         var id = Convert.ToInt32(idCommand.ExecuteScalar());

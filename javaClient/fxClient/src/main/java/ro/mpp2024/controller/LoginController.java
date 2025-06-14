@@ -81,19 +81,4 @@ public class LoginController {
             errorLabel.setText("An error occurred: " + e.getMessage());
         }
     }
-
-//    private void openMainApp(Employee loggedInEmployee) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main-app-view.fxml"));
-//            Stage stage = (Stage) usernameField.getScene().getWindow();
-//            Scene scene = new Scene(loader.load(), 800, 600);
-//            MainAppController controller = loader.getController();
-//            controller.setService(service);
-//            controller.setCurrentEmployee(loggedInEmployee); // Set the current employee
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch (IOException e) {
-//            errorLabel.setText("Error loading main application: " + e.getMessage());
-//        }
-//    }
 }

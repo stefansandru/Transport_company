@@ -8,9 +8,8 @@ namespace persistance;
 
 public class DestinationRepository : AbstractRepository<int, Destination>, IDestinationRepository
 {
-    public DestinationRepository(JdbcUtils jdbc) : base(jdbc)
+    public DestinationRepository(DatabaseConnection jdbc) : base(jdbc)
     {
-        // Constructor specific pentru DestinationRepository, dacă este nevoie
     }
 
     public override Destination? FindById(int id)
@@ -134,7 +133,6 @@ public class DestinationRepository : AbstractRepository<int, Destination>, IDest
                     command.ExecuteNonQuery();
                 }
 
-                // Get the last inserted ID using SQLite's last_insert_rowid()
                 using (var idCommand = new SqliteCommand("SELECT last_insert_rowid()", (SqliteConnection)connection))
                 {
                     var id = Convert.ToInt32(idCommand.ExecuteScalar());
