@@ -72,19 +72,14 @@ CREATE DATABASE transport_company;
 
 ---
 
-## 5.  Project goals / TODO
+## Test Users
 
-- ❌ Add proper unit tests (xUnit / JUnit)
-- ❌ Validation on the client side (disable Reserve button when no seat selected)
-- ❌ CI workflow (GitHub Actions)
-- ✅ Live updates through gRPC streaming
-- ✅ Passwords stored with BCrypt
+| Username | Password |
+|----------|----------|
+| ana      | ana      |
+| adi      | adi      |
 
-Feel free to fork the repo and hack away – PRs are more than welcome!
+> The password for each account is the same as the username.
 
----
+*Use these accounts to log in and test the application.*
 
-## 6.  Acknowledgments
-
-• [grpc-dotnet](https://github.com/grpc/grpc-dotnet) for the smooth RPC layer.  
-• My awesome colleagues from the 2024 MPP lab group for the late-night debugging sessions. 

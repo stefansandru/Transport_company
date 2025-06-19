@@ -60,7 +60,7 @@ public class TransportCompanyService : TransportCompany.GrpcServer.TransportComp
     public override Task<LoginReply> Login(LoginRequest request, ServerCallContext context)
     {
         var employee = _employeeRepository.FindByUsername(request.Username);
-
+        
         if (employee == null)
         {
             _logger.LogWarning("Employee not found!");
